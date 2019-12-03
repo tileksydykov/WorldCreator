@@ -10,6 +10,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/scenes/MainScene.fxml"));
         primaryStage.setTitle("Architector");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
