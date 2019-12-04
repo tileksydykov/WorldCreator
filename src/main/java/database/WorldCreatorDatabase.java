@@ -7,12 +7,27 @@ public class WorldCreatorDatabase {
     private final String AUTHOR_TABLE_NAME = "author";
     private final String BOOK_TABLE_NAME = "book";
     private final String CHAPTER_TABLE_NAME = "chapter";
+    private final String CHARACTER_TABLE_NAME = "characters";
     private final String BOOK_AUTHOR_TABLE_NAME = "bookauthor";
 
     public static void main(String[] args) {
         WorldCreatorDatabase w =  new WorldCreatorDatabase();
 
+        try{
+            w.recreateAllTables();
+            System.out.println("all recreated ");
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+    }
 
+    private void recreateAllTables() throws Exception {
+        dropAllTables();
+        createTableAuthor();
+        createTableBook();
+        createTableBookAuthor();
+        createTableChapter();
+        createTableCharacter();
     }
 
     private Connection getConnection() throws Exception {
@@ -21,7 +36,7 @@ public class WorldCreatorDatabase {
     }
 
     private void createTableAuthor() throws Exception{
-        Connection c = null;
+        Connection c = getConnection();
         Statement stmt = c.createStatement();
 
         String sql = "CREATE TABLE " + AUTHOR_TABLE_NAME +
@@ -37,7 +52,7 @@ public class WorldCreatorDatabase {
     }
 
     private void createTableBook() throws Exception{
-        Connection c = null;
+        Connection c = getConnection();
         Statement stmt = c.createStatement();
 
         String sql = "CREATE TABLE " + BOOK_TABLE_NAME +
@@ -54,14 +69,15 @@ public class WorldCreatorDatabase {
     }
 
     private void createTableChapter() throws Exception{
-        Connection c = null;
+        Connection c = getConnection();
         Statement stmt = c.createStatement();
 
         String sql = "CREATE TABLE " + CHAPTER_TABLE_NAME +
-                "(id             INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
-                " name           CHAR(100)   NOT NULL," +
-                " body           TEXT ," +
-                " book_id         INTEGER ," +
+                "(id                  INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
+                " title                CHAR(100)   NOT NULL," +
+                " body                TEXT ," +
+                " book_order          INTEGER," +
+                " book_id             INTEGER ," +
                 "FOREIGN KEY(book_id) REFERENCES "+ BOOK_TABLE_NAME +"(id)" +
                 ")" ;
         stmt.executeUpdate(sql);
@@ -71,12 +87,12 @@ public class WorldCreatorDatabase {
     }
 
     private void createTableBookAuthor() throws Exception{
-        Connection c = null;
+        Connection c = getConnection();
         Statement stmt = c.createStatement();
 
-        String sql = "CREATE TABLE " + CHAPTER_TABLE_NAME +
-                "(book_id             INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
-                " author_id             INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
+        String sql = "CREATE TABLE " + BOOK_AUTHOR_TABLE_NAME +
+                "(book_id             INTEGER     NOT NULL ," +
+                " author_id             INTEGER     NOT NULL," +
                 "FOREIGN KEY(book_id) REFERENCES "+ BOOK_TABLE_NAME +"(id), " +
                 "FOREIGN KEY(author_id) REFERENCES "+ AUTHOR_TABLE_NAME +"(id)" +
                 ")" ;
@@ -86,11 +102,43 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private void dropAuthorTable() throws Exception{
-        Connection c = null;
+    private void createTableCharacter() throws Exception{
+        Connection c = getConnection();
         Statement stmt = c.createStatement();
 
-        String sql = "DROP TABLE " + AUTHOR_TABLE_NAME;
+        String sql = "CREATE TABLE " + CHARACTER_TABLE_NAME +
+                "(id             INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
+                " name           CHAR(100)   NOT NULL," +
+                " history           TEXT ," +
+                " book_id         INTEGER ," +
+                "FOREIGN KEY(book_id) REFERENCES "+ BOOK_TABLE_NAME +"(id)" +
+                ")" ;
+        stmt.executeUpdate(sql);
+
+        stmt.close();
+        c.close();
+    }
+
+    private void dropTable(String tableName) throws Exception{
+        Connection c = getConnection();
+        Statement stmt = c.createStatement();
+
+        String sql = "DROP TABLE " + tableName;
+        stmt.executeUpdate(sql);
+
+        stmt.close();
+        c.close();
+    }
+
+    private  void dropAllTables() throws Exception{
+        Connection c = getConnection();
+        Statement stmt = c.createStatement();
+
+        String sql = "DROP TABLE " + AUTHOR_TABLE_NAME + ";";
+        sql += "DROP TABLE " + BOOK_TABLE_NAME + ";";
+        sql += "DROP TABLE " + BOOK_AUTHOR_TABLE_NAME + ";";
+        sql += "DROP TABLE " + CHAPTER_TABLE_NAME + ";";
+        sql += "DROP TABLE " + CHARACTER_TABLE_NAME + ";";
         stmt.executeUpdate(sql);
 
         stmt.close();

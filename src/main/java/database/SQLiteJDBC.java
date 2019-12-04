@@ -135,7 +135,7 @@ public class SQLiteJDBC {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection(DB_TEST_URL);
-            c.setAutoCommit(false);http://google.github.io/lovefield/error_lookup/src/error_lookup.html?c=201&p0=Item.pkItem&p1=100
+            c.setAutoCommit(false);// http://google.github.io/lovefield/error_lookup/src/error_lookup.html?c=201&p0=Item.pkItem&p1=100
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
