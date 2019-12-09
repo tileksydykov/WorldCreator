@@ -13,6 +13,7 @@ public class WorldCreatorDatabase {
     private final String CHARACTER_TABLE_NAME = "characters";
     private final String BOOK_AUTHOR_TABLE_NAME = "bookauthor";
 
+
     public static void main(String[] args) {
         WorldCreatorDatabase w = new WorldCreatorDatabase();
 
