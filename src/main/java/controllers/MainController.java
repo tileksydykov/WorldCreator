@@ -1,17 +1,24 @@
 package controllers;
 
 import controllers.controllerHelpers.MainControllerHelper;
-import helpers.SceneLoader;
+import helpers.Loader;
+import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class MainController {
-    private SceneLoader sceneLoader;
+import java.io.IOException;
+
+public class MainController extends ControllerBase {
+    private Loader loader;
+    private MainControllerHelper helper;
 
     @FXML
     private TreeView<?> mainTree;
@@ -23,19 +30,13 @@ public class MainController {
     private TextField addCharacterField;
 
     @FXML
-    private Button adCharacterButton;
-
-    @FXML
-    private ListView<?> characterList;
+    private ListView<Label> characterList;
 
     @FXML
     public void initialize() {
-        sceneLoader = new SceneLoader();
-
-        MainControllerHelper helper = new MainControllerHelper();
-
+        loader = new Loader();
+        helper = new MainControllerHelper();
         mainTree.setRoot(helper.getTree());
-
         mainTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<?>>() {
             @Override
             public void changed(ObservableValue<? extends TreeItem<?>> observable, TreeItem<?> oldValue, TreeItem<?> newValue) {
@@ -56,8 +57,52 @@ public class MainController {
                 mainPane.getSelectionModel().select(t);
             }
         });
-
         mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
+    }
+
+    @FXML
+    void addCharacter(ActionEvent event) {
+        String s = addCharacterField.getText();
+        if(s.isEmpty()){
+            return;
+        }
+        Label c = new Label();
+
+        c.setText(s);
+
+        c.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                    Stage stage = new Stage();
+                    stage.setTitle("Edit character: " + s);
+                    FXMLLoader l = loader.getLoader("EditCharacterScene");
+                    try{
+                        stage.setScene(new Scene(l.load()));
+                    }catch (IOException e){
+                        System.out.println(e.toString());
+                    }
+                    EditCharacterController c = l.getController();
+                    c.setNameField(s);
+                    stage.show();
+            }
+        });
+
+        characterList.getItems().add(characterList.getItems().size(), c);
+        characterList.scrollTo(characterList.getItems().size() - 1);
+        // list.edit(list.getItems().size() - 1);
+
+        new AnimationTimer() {
+            int frameCount = 0 ;
+            @Override
+            public void handle(long now) {
+                frameCount++ ;
+                if (frameCount > 1) {
+                    characterList.edit(characterList.getItems().size() - 1);
+                    stop();
+                }
+            }
+
+        }.start();
     }
 
     @FXML
@@ -65,7 +110,7 @@ public class MainController {
         Stage newWindow = new Stage();
         Scene scene;
         try {
-            scene = sceneLoader.getScene("NewProjectScene");
+            scene = loader.getScene("NewProjectScene");
         } catch (Exception e) {
             scene = new Scene(new Label("error"));
         }
@@ -79,7 +124,7 @@ public class MainController {
         Stage newWindow = new Stage();
         Scene scene;
         try {
-            scene = sceneLoader.getScene("AboutScene");
+            scene = loader.getScene("AboutScene");
         } catch (Exception e) {
             scene = new Scene(new Label("error"));
         }
