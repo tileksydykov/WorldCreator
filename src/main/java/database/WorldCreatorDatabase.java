@@ -1,5 +1,6 @@
 package database;
 
+import database.models.Book;
 import database.models.BookCharacter;
 
 import java.sql.*;
@@ -22,7 +23,6 @@ public class WorldCreatorDatabase {
             System.out.println(e.toString());
         }
     }
-
 
     private void recreateAllTables() throws Exception {
         dropAllTables();
@@ -148,17 +148,121 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    
+    private Book getBookById(int id) {
+        Book book = new Book();
+        boolean found = false;
+        book.setId(id);
+        try {
+            Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sql = "SELECT name, decription, intro, world FROM " + BOOK_TABLE_NAME + " ()" +
+                    "WHERE id = " + id + " LIMIT 1;";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            found = rs.next();
+            if (found) {
+                book.setName(rs.getString("name"));
+                book.setDescription(rs.getString("description"));
+                book.setIntro(rs.getString("intro"));
+                book.setWorld(rs.getString("world"));
+            }
+
+            conn.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+        if (found) {
+            return book;
+        } else {
+            return null;
+        }
+    }
+
+    private BookCharacter getCharacterByName(String name) {
+        BookCharacter character = new BookCharacter();
+        boolean found = false;
+        character.setName(name);
+        try {
+            Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sql = "SELECT id, name, history, book_id FROM " + CHARACTER_TABLE_NAME + " ()" +
+                    "WHERE name = " + name + " LIMIT 1;";
+
+            ResultSet rs = stmt.executeQuery(sql);
+            found = rs.next();
+            if (found) {
+                character.setName(rs.getString("name"));
+                character.setId(rs.getInt("id"));
+                character.setHistory(rs.getString("history"));
+            }
+
+            conn.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+        if (found) {
+            return character;
+        } else {
+            return null;
+        }
+
+    }
+
+    private BookCharacter getCharacterById(int id) {
+        BookCharacter character = new BookCharacter();
+        boolean found = false;
+        character.setId(id);
+        try {
+            Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sql = "SELECT name, history, book_id FROM " + CHARACTER_TABLE_NAME + " ()" +
+                    "WHERE id = " + id + " LIMIT 1;";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            found = rs.next();
+            if (found) {
+                character.setName(rs.getString("name"));
+                character.setHistory(rs.getString("history"));
+            }
+
+
+            conn.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+        if (found) {
+            return character;
+        } else {
+            return null;
+        }
+    }
 
     private void putCharacter(BookCharacter c) {
         try {
             Connection conn = getConnection();
             Statement stmt = conn.createStatement();
 
-            String sql = "INSERT INTO " + CHARACTER_TABLE_NAME + " (id, name, history, book_id)" +
-                    "VALUES (null , '" + c.getName() + "', '" + c.getHistory() + "', " + c.getBook().getId() + ");";
+            BookCharacter c_2 = getCharacterByName(c.getName());
+            String sql;
+            if (c_2 == null) {
+                sql = "INSERT INTO " + CHARACTER_TABLE_NAME + " (id, name, history, book_id)" +
+                        "VALUES (null , '" + c.getName() + "', '" + c.getHistory() + "', " + c.getBook().getId() + ");";
+            } else {
+                sql = "UPDATE " + CHARACTER_TABLE_NAME + "SET name = '" + c.getName() + "', history = '"
+                        + c.getHistory() + "' WHERE id = " + c.getId() + ";";
+            }
 
             stmt.executeUpdate(sql);
+            conn.close();
+            stmt.close();
         } catch (Exception e) {
             System.out.println(e.getClass() + ": " + e.getMessage());
         }

@@ -8,6 +8,8 @@ public class BookCharacter implements Modelnterface {
     private String history = "";
     private Book book;
 
+    public BookCharacter(){}
+
     public BookCharacter(int id, String name, String history, Book book) {
         this.id = id;
         this.name = name;
@@ -47,4 +49,6 @@ public class BookCharacter implements Modelnterface {
     public void setBook(Book book) {
         this.book = book;
     }
+
+
 }

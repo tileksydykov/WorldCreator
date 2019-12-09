@@ -70,17 +70,6 @@ public class SQLiteJDBC {
                     "VALUES (null , 'Steve No Jobs', 20, 'California', 50000.00);";
             stmt.executeUpdate(sql);
 
-//            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-//                    "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
-//            stmt.executeUpdate(sql);
-//
-//            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-//                    "VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );";
-//            stmt.executeUpdate(sql);
-//
-//            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-//                    "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
-//            stmt.executeUpdate(sql);
 
             stmt.close();
             c.commit();
