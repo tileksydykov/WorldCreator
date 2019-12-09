@@ -1,10 +1,12 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 
 public class EditCharacterController extends ControllerBase{
     int id;
@@ -20,7 +22,9 @@ public class EditCharacterController extends ControllerBase{
 
     @FXML
     void save(ActionEvent event) {
-
+        Node source = (Node)  event.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     public void setId(int id) {

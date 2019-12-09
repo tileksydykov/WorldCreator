@@ -1,11 +1,12 @@
 package controllers.controllerHelpers;
 
+import com.sun.jndi.ldap.Connection;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class MainControllerHelper {
+public class MainControllerHelper extends ControllerHelper {
 
     public TreeItem getTree() {
         TreeItem rootItem = new TreeItem("BookName");
@@ -26,7 +27,6 @@ public class MainControllerHelper {
 
         return rootItem;
     }
-
 
     public Pane getPane(String paneName){
         TextArea textArea = new TextArea();

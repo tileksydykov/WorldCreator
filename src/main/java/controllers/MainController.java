@@ -8,10 +8,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -63,27 +63,33 @@ public class MainController extends ControllerBase {
     @FXML
     void addCharacter(ActionEvent event) {
         String s = addCharacterField.getText();
+        addCharacterField.setText("");
+
+
+
         if(s.isEmpty()){
             return;
         }
+
         Label c = new Label();
-
         c.setText(s);
-
         c.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                if (event != null) {
                     Stage stage = new Stage();
                     stage.setTitle("Edit character: " + s);
-                    FXMLLoader l = loader.getLoader("EditCharacterScene");
-                    try{
+                    Loader l = loader.getLoader("EditCharacterScene");
+                    try {
                         stage.setScene(new Scene(l.load()));
-                    }catch (IOException e){
+                    } catch (IOException e) {
                         System.out.println(e.toString());
                     }
                     EditCharacterController c = l.getController();
                     c.setNameField(s);
-                    stage.show();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.showAndWait();
+                }
             }
         });
 
