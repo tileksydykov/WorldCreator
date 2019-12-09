@@ -3,13 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -17,14 +15,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar prefHeight="0.0" prefWidth="363.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#openNewProject" text=" New Project" />
+                  <MenuItem mnemonicParsing="false" text="Export" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -34,38 +33,17 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#openAbout" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </top>
    <left>
-      <TreeView prefHeight="375.0" prefWidth="179.0" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="mainTree" prefHeight="375.0" prefWidth="179.0" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="Untitled Tab 2">
-               <content>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <center>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-                     </center>
-                  </BorderPane>
-               </content>
-          </Tab>
-            <Tab text="Untitled Tab 2">
-               <content>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <center>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-                     </center>
-                  </BorderPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
+      <TabPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -83,17 +61,17 @@
               </rowConstraints>
                <children>
                   <Label text="Add Character" GridPane.columnIndex="1" />
-                  <TextField prefHeight="17.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="addCharacterField" prefHeight="17.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets right="10.0" />
                      </opaqueInsets>
                   </TextField>
-                  <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="adCharacterButton" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </top>
          <center>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="characterList" prefWidth="180.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </right>

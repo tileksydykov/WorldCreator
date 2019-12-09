@@ -1,15 +1,14 @@
+import helpers.SceneLoader;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/MainScene.fxml"));
-        primaryStage.setTitle("Architector");
-        primaryStage.setScene(new Scene(root));
+        SceneLoader sceneLoader = new SceneLoader();
+        primaryStage.setTitle("World Creator");
+        primaryStage.setScene(sceneLoader.getScene("MainScene"));
         primaryStage.setMaximized(true);
         primaryStage.show();
     }
