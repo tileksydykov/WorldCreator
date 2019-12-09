@@ -1,5 +1,6 @@
 package database;
 
+import com.sun.istack.internal.Nullable;
 import database.models.Book;
 import database.models.BookCharacter;
 
@@ -12,7 +13,6 @@ public class WorldCreatorDatabase {
     private final String CHAPTER_TABLE_NAME = "chapter";
     private final String CHARACTER_TABLE_NAME = "characters";
     private final String BOOK_AUTHOR_TABLE_NAME = "bookauthor";
-
 
     public static void main(String[] args) {
         WorldCreatorDatabase w = new WorldCreatorDatabase();
@@ -149,32 +149,31 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private Book getBookById(int id) {
+    @Nullable
+    private Book getBookById(int id) throws Exception {
         Book book = new Book();
         boolean found = false;
         book.setId(id);
-        try {
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
 
-            String sql = "SELECT name, decription, intro, world FROM " + BOOK_TABLE_NAME + " ()" +
-                    "WHERE id = " + id + " LIMIT 1;";
+        Connection conn = getConnection();
+        Statement stmt = conn.createStatement();
 
-            ResultSet rs = stmt.executeQuery(sql);
+        String sql = "SELECT name, decription, intro, world FROM " + BOOK_TABLE_NAME + " ()" +
+                "WHERE id = " + id + " LIMIT 1;";
 
-            found = rs.next();
-            if (found) {
-                book.setName(rs.getString("name"));
-                book.setDescription(rs.getString("description"));
-                book.setIntro(rs.getString("intro"));
-                book.setWorld(rs.getString("world"));
-            }
+        ResultSet rs = stmt.executeQuery(sql);
 
-            conn.close();
-            stmt.close();
-        } catch (Exception e) {
-            System.out.println(e.getClass() + ": " + e.getMessage());
+        found = rs.next();
+        if (found) {
+            book.setName(rs.getString("name"));
+            book.setDescription(rs.getString("description"));
+            book.setIntro(rs.getString("intro"));
+            book.setWorld(rs.getString("world"));
         }
+
+        conn.close();
+        stmt.close();
+
         if (found) {
             return book;
         } else {
@@ -182,63 +181,59 @@ public class WorldCreatorDatabase {
         }
     }
 
-    private BookCharacter getCharacterByName(String name) {
+    @Nullable
+    private BookCharacter getCharacterByName(String name) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
         character.setName(name);
-        try {
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
 
-            String sql = "SELECT id, name, history, book_id FROM " + CHARACTER_TABLE_NAME + " ()" +
-                    "WHERE name = " + name + " LIMIT 1;";
+        Connection conn = getConnection();
+        Statement stmt = conn.createStatement();
 
-            ResultSet rs = stmt.executeQuery(sql);
-            found = rs.next();
-            if (found) {
-                character.setName(rs.getString("name"));
-                character.setId(rs.getInt("id"));
-                character.setHistory(rs.getString("history"));
-            }
+        String sql = "SELECT id, name, history, book_id FROM " + CHARACTER_TABLE_NAME + " ()" +
+                "WHERE name = " + name + " LIMIT 1;";
 
-            conn.close();
-            stmt.close();
-        } catch (Exception e) {
-            System.out.println(e.getClass() + ": " + e.getMessage());
+        ResultSet rs = stmt.executeQuery(sql);
+        found = rs.next();
+        if (found) {
+            character.setName(rs.getString("name"));
+            character.setId(rs.getInt("id"));
+            character.setHistory(rs.getString("history"));
         }
+
+        conn.close();
+        stmt.close();
+
         if (found) {
             return character;
         } else {
             return null;
         }
-
     }
 
-    private BookCharacter getCharacterById(int id) {
+    @Nullable
+    private BookCharacter getCharacterById(int id) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
         character.setId(id);
-        try {
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
 
-            String sql = "SELECT name, history, book_id FROM " + CHARACTER_TABLE_NAME + " ()" +
-                    "WHERE id = " + id + " LIMIT 1;";
+        Connection conn = getConnection();
+        Statement stmt = conn.createStatement();
 
-            ResultSet rs = stmt.executeQuery(sql);
+        String sql = "SELECT name, history, book_id FROM " + CHARACTER_TABLE_NAME + " ()" +
+                "WHERE id = " + id + " LIMIT 1;";
 
-            found = rs.next();
-            if (found) {
-                character.setName(rs.getString("name"));
-                character.setHistory(rs.getString("history"));
-            }
+        ResultSet rs = stmt.executeQuery(sql);
 
-
-            conn.close();
-            stmt.close();
-        } catch (Exception e) {
-            System.out.println(e.getClass() + ": " + e.getMessage());
+        found = rs.next();
+        if (found) {
+            character.setName(rs.getString("name"));
+            character.setHistory(rs.getString("history"));
         }
+
+        conn.close();
+        stmt.close();
+
         if (found) {
             return character;
         } else {
@@ -246,26 +241,24 @@ public class WorldCreatorDatabase {
         }
     }
 
-    private void putCharacter(BookCharacter c) {
-        try {
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
+    private void putCharacter(BookCharacter c) throws Exception {
 
-            BookCharacter c_2 = getCharacterByName(c.getName());
-            String sql;
-            if (c_2 == null) {
-                sql = "INSERT INTO " + CHARACTER_TABLE_NAME + " (id, name, history, book_id)" +
-                        "VALUES (null , '" + c.getName() + "', '" + c.getHistory() + "', " + c.getBook().getId() + ");";
-            } else {
-                sql = "UPDATE " + CHARACTER_TABLE_NAME + "SET name = '" + c.getName() + "', history = '"
-                        + c.getHistory() + "' WHERE id = " + c.getId() + ";";
-            }
+        Connection conn = getConnection();
+        Statement stmt = conn.createStatement();
 
-            stmt.executeUpdate(sql);
-            conn.close();
-            stmt.close();
-        } catch (Exception e) {
-            System.out.println(e.getClass() + ": " + e.getMessage());
+        BookCharacter c_2 = getCharacterByName(c.getName());
+        String sql;
+        if (c_2 == null) {
+            sql = "INSERT INTO " + CHARACTER_TABLE_NAME + " (id, name, history, book_id)" +
+                    "VALUES (null , '" + c.getName() + "', '" + c.getHistory() + "', " + c.getBook().getId() + ");";
+        } else {
+            sql = "UPDATE " + CHARACTER_TABLE_NAME + "SET name = '" + c.getName() + "', history = '"
+                    + c.getHistory() + "' WHERE id = " + c.getId() + ";";
         }
+
+        stmt.executeUpdate(sql);
+        conn.close();
+        stmt.close();
+
     }
 }
