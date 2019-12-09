@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainController extends ControllerBase {
-    private Loader loader;
     private MainControllerHelper helper;
 
     @FXML
@@ -34,7 +33,7 @@ public class MainController extends ControllerBase {
 
     @FXML
     public void initialize() {
-        loader = new Loader();
+
         helper = new MainControllerHelper();
         mainTree.setRoot(helper.getTree());
         mainTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<?>>() {
@@ -65,7 +64,7 @@ public class MainController extends ControllerBase {
         String s = addCharacterField.getText();
         addCharacterField.setText("");
 
-
+        alert("There is already this user in our database");
 
         if(s.isEmpty()){
             return;

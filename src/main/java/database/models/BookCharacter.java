@@ -2,13 +2,13 @@ package database.models;
 
 import database.models.modelhelper.Modelnterface;
 
-public class Character implements Modelnterface {
+public class BookCharacter implements Modelnterface {
     private int id;
-    private String name;
-    private String history;
+    private String name = "";
+    private String history = "";
     private Book book;
 
-    public Character(int id, String name, String history, Book book) {
+    public BookCharacter(int id, String name, String history, Book book) {
         this.id = id;
         this.name = name;
         this.history = history;
