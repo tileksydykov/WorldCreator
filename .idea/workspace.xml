@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6342c79-756d-41f8-b42d-e0a5b8c856ec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/tilek.sydykov.Architector.main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/databases/WorldCreator.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/databases/test.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/scenes/AboutScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/scenes/Alert.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/scenes/EditCharacterScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/scenes/MainScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/scenes/NewProjectScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/styles/dark.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -46,13 +41,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="381">
+              <caret line="242" lean-forward="true" selection-start-line="242" selection-end-line="242" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#main#0;class#WorldCreatorDatabase#0" />
                 <element signature="method#recreateAllTables#0;class#WorldCreatorDatabase#0" />
                 <element signature="method#getConnection#0;class#WorldCreatorDatabase#0" />
                 <element signature="method#createTableAuthor#0;class#WorldCreatorDatabase#0" />
@@ -62,7 +67,10 @@
                 <element signature="method#createTableCharacter#0;class#WorldCreatorDatabase#0" />
                 <element signature="method#dropTable#0;class#WorldCreatorDatabase#0" />
                 <element signature="method#dropAllTables#0;class#WorldCreatorDatabase#0" />
+                <element signature="method#getBookById#0;class#WorldCreatorDatabase#0" />
+                <element signature="method#getCharacterByName#0;class#WorldCreatorDatabase#0" />
                 <element signature="method#getCharacterById#0;class#WorldCreatorDatabase#0" />
+                <element signature="method#putCharacter#0;class#WorldCreatorDatabase#0" />
               </folding>
             </state>
           </provider>
@@ -84,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
+            <state relative-caret-position="1518">
               <caret line="66" selection-start-line="66" selection-end-line="66" />
             </state>
           </provider>
@@ -186,6 +194,8 @@
         <option value="$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java" />
+        <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/gradlew" />
       </list>
     </option>
   </component>
@@ -211,6 +221,32 @@
             </path>
             <path>
               <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -222,7 +258,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575907580227" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575910839739" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -341,17 +377,18 @@
       <updated>1575029312069</updated>
       <workItem from="1575029336261" duration="3721000" />
       <workItem from="1575033565060" duration="40221000" />
-      <workItem from="1575881779466" duration="15709000" />
+      <workItem from="1575881779466" duration="19074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59651000" />
+    <option name="totallyTimeSpent" value="63016000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28214827" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -366,7 +403,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32107022" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.08034188" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32887402" />
@@ -389,9 +426,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradlew.bat">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -494,13 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="35" column="68" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -629,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="874">
@@ -649,17 +669,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        <state relative-caret-position="46">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.7.2/9e0eec4b5fab876b2b6de10ca8435acc89217b63/sqlite-jdbc-3.7.2-sources.jar!/org/sqlite/Conn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1242">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="381">
+          <caret line="242" lean-forward="true" selection-start-line="242" selection-end-line="242" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#WorldCreatorDatabase#0" />
             <element signature="method#recreateAllTables#0;class#WorldCreatorDatabase#0" />
             <element signature="method#getConnection#0;class#WorldCreatorDatabase#0" />
             <element signature="method#createTableAuthor#0;class#WorldCreatorDatabase#0" />
@@ -669,7 +725,10 @@
             <element signature="method#createTableCharacter#0;class#WorldCreatorDatabase#0" />
             <element signature="method#dropTable#0;class#WorldCreatorDatabase#0" />
             <element signature="method#dropAllTables#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#getBookById#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#getCharacterByName#0;class#WorldCreatorDatabase#0" />
             <element signature="method#getCharacterById#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#putCharacter#0;class#WorldCreatorDatabase#0" />
           </folding>
         </state>
       </provider>
