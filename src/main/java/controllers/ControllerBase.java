@@ -1,5 +1,6 @@
 package controllers;
 
+import database.WorldCreatorDatabase;
 import helpers.Loader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -7,6 +8,7 @@ import javafx.stage.Stage;
 
 abstract class ControllerBase {
     Loader loader = new Loader();
+    WorldCreatorDatabase database = new WorldCreatorDatabase();
     public ControllerBase() {}
 
     void alert(String messageToUser){

@@ -182,6 +182,38 @@ public class WorldCreatorDatabase {
     }
 
     @Nullable
+    private Book getBookByName(String name) throws Exception {
+        Book book = new Book();
+        boolean found = false;
+        book.setName(name);
+
+        Connection conn = getConnection();
+        Statement stmt = conn.createStatement();
+
+        String sql = "SELECT name, decription, intro, world FROM " + BOOK_TABLE_NAME + " ()" +
+                "WHERE name = " + name + " LIMIT 1;";
+
+        ResultSet rs = stmt.executeQuery(sql);
+
+        found = rs.next();
+        if (found) {
+            book.setId(rs.getInt("id"));
+            book.setDescription(rs.getString("description"));
+            book.setIntro(rs.getString("intro"));
+            book.setWorld(rs.getString("world"));
+        }
+
+        conn.close();
+        stmt.close();
+
+        if (found) {
+            return book;
+        } else {
+            return null;
+        }
+    }
+
+    @Nullable
     private BookCharacter getCharacterByName(String name) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
@@ -241,6 +273,25 @@ public class WorldCreatorDatabase {
         }
     }
 
+    private void putBook(Book b) throws Exception {
+        Connection conn = getConnection();
+        Statement stmt = conn.createStatement();
+
+        Book c_2 = getBookByName(b.getName());
+        String sql;
+        if (c_2 == null) {
+            sql = "INSERT INTO " + BOOK_TABLE_NAME + " (id, name, world, description, intro)" +
+                    "VALUES (null , '" + b.getName() + "', '" + b.getWorld() + "', '" + b.getDescription() + "', '"+b.getIntro()+"');";
+        } else {
+            sql = "UPDATE " + BOOK_TABLE_NAME + "SET name = '" + b.getName() + "', description = '"
+                    + b.getDescription() + "', world = '" + b.getWorld() + "', intro = '"+b.getIntro()+"' WHERE id = " + b.getId() + ";";
+        }
+
+        stmt.executeUpdate(sql);
+        conn.close();
+        stmt.close();
+    }
+
     private void putCharacter(BookCharacter c) throws Exception {
 
         Connection conn = getConnection();
@@ -259,6 +310,5 @@ public class WorldCreatorDatabase {
         stmt.executeUpdate(sql);
         conn.close();
         stmt.close();
-
     }
 }

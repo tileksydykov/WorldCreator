@@ -1,5 +1,3 @@
-package app;
-
 import database.WorldCreatorDatabase;
 import helpers.Loader;
 import javafx.application.Application;
