@@ -1,6 +1,6 @@
 package controllers;
 
-import controllers.controllerHelpers.MainControllerHelper;
+import controllers.controllerHelpers.MainDataHolder;
 import helpers.Loader;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainController extends ControllerBase {
-    private MainControllerHelper helper;
+    private MainDataHolder helper;
 
     @FXML
     private TreeView<?> mainTree;
@@ -34,7 +34,7 @@ public class MainController extends ControllerBase {
     @FXML
     public void initialize() {
 
-        helper = new MainControllerHelper();
+        helper = new MainDataHolder();
         mainTree.setRoot(helper.getTree());
         mainTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<?>>() {
             @Override

@@ -15,5 +15,10 @@
       <secret-storage>master_key</secret-storage>
       <auth-required>false</auth-required>
     </data-source>
+    <data-source name="WorldCreator [2]" uuid="423543b5-0267-4d8c-89c4-901be594f22f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <auth-required>false</auth-required>
+      <introspection-schemas>*:*</introspection-schemas>
+    </data-source>
   </component>
 </project>

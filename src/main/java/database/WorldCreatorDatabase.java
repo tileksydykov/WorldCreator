@@ -13,19 +13,18 @@ public class WorldCreatorDatabase {
     private final String CHAPTER_TABLE_NAME = "chapter";
     private final String CHARACTER_TABLE_NAME = "characters";
     private final String BOOK_AUTHOR_TABLE_NAME = "bookauthor";
+    private final String LAST_PROJECT = "last";
 
     public static void main(String[] args) {
         WorldCreatorDatabase w = new WorldCreatorDatabase();
-
         try {
-            w.recreateAllTables();
-            System.out.println("all recreated ");
+            System.out.println("last");
         } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
 
-    private void recreateAllTables() throws Exception {
+    public void recreateAllTables() throws Exception {
         dropAllTables();
         createTableAuthor();
         createTableBook();
@@ -34,12 +33,12 @@ public class WorldCreatorDatabase {
         createTableCharacter();
     }
 
-    private Connection getConnection() throws Exception {
+    public Connection getConnection() throws Exception {
         Class.forName("org.sqlite.JDBC");
         return DriverManager.getConnection(DB_TEST_URL);
     }
 
-    private void createTableAuthor() throws Exception {
+    public void createTableAuthor() throws Exception {
         Connection c = getConnection();
         Statement stmt = c.createStatement();
 
@@ -55,24 +54,94 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private void createTableBook() throws Exception {
-        Connection c = getConnection();
-        Statement stmt = c.createStatement();
+    public void createTableLast() throws Exception {
+        try{
+            Connection c = getConnection();
+            Statement stmt = c.createStatement();
 
-        String sql = "CREATE TABLE " + BOOK_TABLE_NAME +
-                "(id             INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
-                " name           CHAR(100)   NOT NULL," +
-                " intro          TEXT ," +
-                " world          TEXT ," +
-                " description    TEXT " +
-                ")";
-        stmt.executeUpdate(sql);
+            String sql = "CREATE TABLE " + LAST_PROJECT +
+                    "(id             INTEGER    PRIMARY KEY ," +
+                    "last_id        INTEGER   NOT NULL" +
+                    ")";
 
-        stmt.close();
-        c.close();
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        }catch (Exception e){
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
     }
 
-    private void createTableChapter() throws Exception {
+    public void putLastId(int lastId){
+        try{
+            Connection c = getConnection();
+            Statement stmt = c.createStatement();
+
+            // String sql = String.format("INSERT INTO %s (id, last_id) VALUES (1, %d)", LAST_PROJECT, lastId );
+
+            String sql = String.format("UPDATE %s SET last_id = %d", LAST_PROJECT, lastId);
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        }catch (Exception e){
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+    }
+
+    @Nullable
+    public Integer getLastId(){
+        try{
+            int id = 0;
+            Connection c = getConnection();
+            Statement stmt = c.createStatement();
+
+            String sql = String.format("SELECT last_id FROM %s WHERE id = %d", LAST_PROJECT, 1);
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()){
+                id = rs.getInt("last_id");
+            }
+
+            stmt.close();
+            c.close();
+            if(id > 0){
+                return id;
+            }else{
+                return null;
+            }
+        }catch (Exception e){
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+        return null;
+    }
+
+    public void createTableBook() throws Exception {
+
+        try{
+            Connection c = getConnection();
+            Statement stmt = c.createStatement();
+
+            String sql = "CREATE TABLE " + BOOK_TABLE_NAME +
+                    "(id             INTEGER    PRIMARY KEY    AUTOINCREMENT   NOT NULL," +
+                    " name           CHAR(100)   NOT NULL," +
+                    " intro          TEXT ," +
+                    " world          TEXT ," +
+                    " description    TEXT " +
+                    ")";
+
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        }catch (Exception e){
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+    }
+
+    public void createTableChapter() throws Exception {
         Connection c = getConnection();
         Statement stmt = c.createStatement();
 
@@ -90,7 +159,7 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private void createTableBookAuthor() throws Exception {
+    public void createTableBookAuthor() throws Exception {
         Connection c = getConnection();
         Statement stmt = c.createStatement();
 
@@ -106,7 +175,7 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private void createTableCharacter() throws Exception {
+    public void createTableCharacter() throws Exception {
         Connection c = getConnection();
         Statement stmt = c.createStatement();
 
@@ -123,7 +192,7 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private void dropTable(String tableName) throws Exception {
+    public void dropTable(String tableName) throws Exception {
         Connection c = getConnection();
         Statement stmt = c.createStatement();
 
@@ -134,7 +203,7 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    private void dropAllTables() throws Exception {
+    public void dropAllTables() throws Exception {
         Connection c = getConnection();
         Statement stmt = c.createStatement();
 
@@ -150,7 +219,7 @@ public class WorldCreatorDatabase {
     }
 
     @Nullable
-    private Book getBookById(int id) throws Exception {
+    public Book getBookById(int id) throws Exception {
         Book book = new Book();
         boolean found = false;
         book.setId(id);
@@ -182,7 +251,7 @@ public class WorldCreatorDatabase {
     }
 
     @Nullable
-    private Book getBookByName(String name) throws Exception {
+    public Book getBookByName(String name) throws Exception {
         Book book = new Book();
         boolean found = false;
         book.setName(name);
@@ -214,7 +283,7 @@ public class WorldCreatorDatabase {
     }
 
     @Nullable
-    private BookCharacter getCharacterByName(String name) throws Exception {
+    public BookCharacter getCharacterByName(String name) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
         character.setName(name);
@@ -244,7 +313,7 @@ public class WorldCreatorDatabase {
     }
 
     @Nullable
-    private BookCharacter getCharacterById(int id) throws Exception {
+    public BookCharacter getCharacterById(int id) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
         character.setId(id);
@@ -273,7 +342,7 @@ public class WorldCreatorDatabase {
         }
     }
 
-    private void putBook(Book b) throws Exception {
+    public void putBook(Book b) throws Exception {
         Connection conn = getConnection();
         Statement stmt = conn.createStatement();
 
@@ -292,7 +361,7 @@ public class WorldCreatorDatabase {
         stmt.close();
     }
 
-    private void putCharacter(BookCharacter c) throws Exception {
+    public void putCharacter(BookCharacter c) throws Exception {
 
         Connection conn = getConnection();
         Statement stmt = conn.createStatement();

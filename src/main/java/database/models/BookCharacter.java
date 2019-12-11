@@ -3,12 +3,18 @@ package database.models;
 import database.models.modelhelper.Modelnterface;
 
 public class BookCharacter implements Modelnterface {
-    private int id;
+    private int id = 0;
     private String name = "";
     private String history = "";
     private Book book;
 
     public BookCharacter(){}
+
+    public BookCharacter( String name, String history, Book book) {
+        this.name = name;
+        this.history = history;
+        this.book = book;
+    }
 
     public BookCharacter(int id, String name, String history, Book book) {
         this.id = id;

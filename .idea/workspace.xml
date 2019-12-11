@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java" line="17" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java" line="16" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6342c79-756d-41f8-b42d-e0a5b8c856ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/filesystem/ProjectReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/ControllerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/DataHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainControllerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainDataHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/databases/WorldCreator.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/databases/WorldCreator.db" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -30,7 +37,20 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="new_file" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="test" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="WorldCreator" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="ExternalProjectsData">
@@ -40,32 +60,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#main#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#recreateAllTables#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#getConnection#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#createTableAuthor#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#createTableBook#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#createTableChapter#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#createTableBookAuthor#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#createTableCharacter#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#dropTable#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#dropAllTables#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#getBookById#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#getBookById#1;class#WorldCreatorDatabase#0" />
-                <element signature="method#getCharacterByName#0;class#WorldCreatorDatabase#0" />
-                <element signature="method#getCharacterById#0;class#WorldCreatorDatabase#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/models/Book.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,11 +69,25 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/filesystem/ProjectReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#459#460#0" expanded="true" />
+                <element signature="e#490#491#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/models/Author.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -87,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="253">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="391">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#453#454#0" expanded="true" />
                 <element signature="e#478#479#0" expanded="true" />
@@ -119,19 +127,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AlertController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EditCharacterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="26" column="22" selection-start-line="24" selection-start-column="6" selection-end-line="26" selection-end-column="22" />
+            <state relative-caret-position="515">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#455#456#0" expanded="true" />
@@ -148,13 +147,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainControllerHelper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainDataHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="180">
+              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#getTree#0;class#MainControllerHelper#0" />
+                <element signature="method#getPane#0;class#MainControllerHelper#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/DataHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -203,23 +213,27 @@
         <option value="$PROJECT_DIR$/src/main/java/helpers/Loader.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/EditCharacterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/ControllerHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainControllerHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/s.java" />
         <option value="$PROJECT_DIR$/src/main/resources/scenes/Alert.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/AlertController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/gradlew" />
         <option value="$PROJECT_DIR$/src/main/java/database/models/Author.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainControllerHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/DataHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainDataHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/filesystem/FileReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/filesystem/ProjectReader.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -263,39 +277,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Architector" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="filesystem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Architector" type="b2602c69:ProjectViewProjectNode" />
@@ -310,7 +292,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575990772079" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576032016471" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -347,7 +329,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="tilek.sydykov.WorldCreator.main" />
@@ -361,19 +343,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HttpServer" />
-      <module name="tilek.sydykov.Architector.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controllers.Main" />
       <module name="tilek.sydykov.Architector.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProjectReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="filesystem.ProjectReader" />
+      <module name="tilek.sydykov.WorldCreator.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="filesystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -409,11 +397,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProjectReader" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.WorldCreatorDatabase" />
         <item itemvalue="Application.SQLiteJDBC" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.HttpServer" />
       </list>
     </recent_temporary>
   </component>
@@ -429,18 +417,18 @@
       <updated>1575029312069</updated>
       <workItem from="1575029336261" duration="3721000" />
       <workItem from="1575033565060" duration="40221000" />
-      <workItem from="1575881779466" duration="22194000" />
+      <workItem from="1575881779466" duration="32849000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66136000" />
+    <option name="totallyTimeSpent" value="76791000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14232409" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20196672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -449,13 +437,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.71571904" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25083613" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.16752137" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.16752137" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.033444814" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32887402" />
@@ -469,7 +457,7 @@
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Gradle" order="6" />
-      <window_info anchor="right" id="Database" order="7" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="7" weight="0.32942432" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
@@ -613,27 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/ControllerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding>
-            <element signature="e#179#180#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainControllerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/scenes/Alert.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -649,31 +616,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#914:1724" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AlertController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EditCharacterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="26" column="22" selection-start-line="24" selection-start-column="6" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -706,17 +648,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1518">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/models/Author.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -727,27 +662,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/models/Book.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EditCharacterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        <state relative-caret-position="515">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AlertController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/SQLiteJDBC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ControllerBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/DataHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/models/BookCharacter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="391">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#453#454#0" expanded="true" />
             <element signature="e#478#479#0" expanded="true" />
@@ -755,16 +722,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/controllerHelpers/MainDataHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getTree#0;class#MainControllerHelper#0" />
+            <element signature="method#getPane#0;class#MainControllerHelper#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/WorldCreatorDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
+        <state relative-caret-position="414">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#main#0;class#WorldCreatorDatabase#0" />
             <element signature="method#recreateAllTables#0;class#WorldCreatorDatabase#0" />
             <element signature="method#getConnection#0;class#WorldCreatorDatabase#0" />
             <element signature="method#createTableAuthor#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#createTableBook#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#putLastId#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#putLastId#1;class#WorldCreatorDatabase#0" />
             <element signature="method#createTableBook#0;class#WorldCreatorDatabase#0" />
             <element signature="method#createTableChapter#0;class#WorldCreatorDatabase#0" />
             <element signature="method#createTableBookAuthor#0;class#WorldCreatorDatabase#0" />
@@ -775,6 +757,27 @@
             <element signature="method#getBookById#1;class#WorldCreatorDatabase#0" />
             <element signature="method#getCharacterByName#0;class#WorldCreatorDatabase#0" />
             <element signature="method#getCharacterById#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#putCharacter#0;class#WorldCreatorDatabase#0" />
+            <element signature="method#putCharacter#0;class#WorldCreatorDatabase#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/models/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filesystem/ProjectReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
           </folding>
         </state>
       </provider>

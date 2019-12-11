@@ -1,12 +1,18 @@
 package controllers.controllerHelpers;
 
-import com.sun.jndi.ldap.Connection;
+import database.models.Book;
+import database.models.BookCharacter;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class MainControllerHelper extends ControllerHelper {
+public class MainDataHolder extends DataHolder {
+    Book book;
+
+    public MainDataHolder(){
+        // book = database.getBookById();
+    }
 
     public TreeItem getTree() {
         TreeItem rootItem = new TreeItem("BookName");
@@ -35,4 +41,11 @@ public class MainControllerHelper extends ControllerHelper {
         return p;
     }
 
+    public void saveCharacter(String name) {
+        try {
+            database.putCharacter(new BookCharacter("", "", book));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
