@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+
 public class EditCharacterController extends ControllerBase{
     int id;
 
