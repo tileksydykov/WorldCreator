@@ -2,7 +2,6 @@ package database;
 
 import database.models.Book;
 import database.models.BookCharacter;
-import jdk.internal.jline.internal.Nullable;
 
 import java.sql.*;
 
@@ -90,7 +89,6 @@ public class WorldCreatorDatabase {
         }
     }
 
-    @Nullable
     public Integer getLastId(){
         try{
             int id = 0;
@@ -218,7 +216,6 @@ public class WorldCreatorDatabase {
         c.close();
     }
 
-    @Nullable
     public Book getBookById(int id) throws Exception {
         Book book = new Book();
         boolean found = false;
@@ -250,7 +247,6 @@ public class WorldCreatorDatabase {
         }
     }
 
-    @Nullable
     public Book getBookByName(String name) throws Exception {
         Book book = new Book();
         boolean found = false;
@@ -282,7 +278,6 @@ public class WorldCreatorDatabase {
         }
     }
 
-    @Nullable
     public BookCharacter getCharacterByName(String name) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
@@ -312,7 +307,6 @@ public class WorldCreatorDatabase {
         }
     }
 
-    @Nullable
     public BookCharacter getCharacterById(int id) throws Exception {
         BookCharacter character = new BookCharacter();
         boolean found = false;
