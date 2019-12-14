@@ -19,8 +19,8 @@
   <rowConstraints>
       <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="204.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="196.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="301.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -30,8 +30,11 @@
       <TextArea fx:id="historyField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
       <TextArea fx:id="relationField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets bottom="2.0" top="2.0" />
+            <Insets bottom="10.0" top="10.0" />
          </GridPane.margin>
+         <opaqueInsets>
+            <Insets left="10.0" top="10.0" />
+         </opaqueInsets>
       </TextArea>
       <GridPane GridPane.columnIndex="2" GridPane.rowIndex="4">
         <columnConstraints>
