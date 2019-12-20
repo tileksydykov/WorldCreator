@@ -6,6 +6,7 @@ public class BookCharacter implements Modelnterface {
     private int id = 0;
     private String name = "";
     private String history = "";
+    private int bookId = 0;
     private Book book;
 
     public BookCharacter(){}
