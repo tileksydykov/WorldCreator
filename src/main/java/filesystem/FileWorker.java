@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 
 public class FileWorker {
+
     public static Document constructCharacterFile(BookCharacter c) throws ParserConfigurationException {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
         Element root = doc.createElement("character");
@@ -22,6 +23,7 @@ public class FileWorker {
         root.appendChild(history);
         return doc;
     }
+
     public static Document constructProjectFile(String bookName, ArrayList<Author> authors) throws ParserConfigurationException {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
         Element root = doc.createElement("project");
@@ -41,7 +43,6 @@ public class FileWorker {
             authors_el.appendChild(author);
         }
         root.appendChild(authors_el);
-
         return doc;
     }
 }

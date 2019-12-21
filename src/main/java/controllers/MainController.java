@@ -8,6 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +34,7 @@ public class MainController extends ControllerBase {
 
     @FXML
     public void initialize() {
+
 
         helper = new MainDataHolder();
         mainTree.setRoot(helper.getTree());
@@ -61,10 +63,9 @@ public class MainController extends ControllerBase {
 
     @FXML
     void addCharacter(ActionEvent event) {
+
         String s = addCharacterField.getText();
         addCharacterField.setText("");
-
-        alert("There is already this user in our database");
 
         if(s.isEmpty()){
             return;

@@ -1,16 +1,19 @@
+import controllers.EditCharacterController;
 import database.WorldCreatorDatabase;
 import helpers.Loader;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class App extends Application {
     private WorldCreatorDatabase database;
-    Loader loader;
+    Loader loader = new Loader();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         createDatabase();
-        loader  = new Loader();
         primaryStage.setTitle("World Creator");
         primaryStage.setScene(loader.getScene("MainScene"));
         primaryStage.setMaximized(true);

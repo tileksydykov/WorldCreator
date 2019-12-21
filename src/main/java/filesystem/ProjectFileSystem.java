@@ -1,5 +1,7 @@
 package filesystem;
 
+import database.models.Author;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -7,43 +9,40 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.util.ArrayList;
 
 public class ProjectFileSystem {
     private final String PROJECTS_NODE = "\\Projects";
-    private final String AUTHORS_FOLDER = "\\Authors";
-    private final String CHAPTERS_FOLDER = "\\Chapters";
-    private final String BOOK_CHARACTERS_FOLDER = "\\Characters";
-    private final String SETTINGS_FOLDER = "\\Settings";
 
-    private String currentProjectFolderName = "";
-
+    private final String FILE_EXTENSION = ".xml";
+    private String projectName = "";
     private String projectDirURI = "";
 
-    ProjectFileSystem(String currentProjectFolder) {
-        currentProjectFolderName = currentProjectFolder;
+    public ProjectFileSystem(){
         String workingDirectory = System.getProperty("user.dir");
-        projectDirURI = workingDirectory + PROJECTS_NODE + currentProjectFolderName;
-        createNewProject();
-        initNewProjectFile();
+        projectDirURI = workingDirectory + PROJECTS_NODE;
+    }
+
+    public ProjectFileSystem(String projectName) {
+        this.projectName = projectName;
+        String workingDirectory = System.getProperty("user.dir");
+        projectDirURI = workingDirectory + PROJECTS_NODE;
+        ArrayList<Author> a = new ArrayList<Author>();
+        a.add(new Author("hello", "fgsjn@mail.ru"));
+        initNewProjectFile(projectName, a);
     }
 
     public static void main(String[] args) {
-        new ProjectFileSystem("\\HelloBook");
+        ProjectFileSystem p = new ProjectFileSystem();
+        p.listProjects();
     }
 
-    private void createNewProject() {
-        new File(projectDirURI + AUTHORS_FOLDER).mkdirs();
-        new File(projectDirURI + CHAPTERS_FOLDER).mkdirs();
-        new File(projectDirURI + SETTINGS_FOLDER).mkdirs();
-        new File(projectDirURI + BOOK_CHARACTERS_FOLDER).mkdirs();
-    }
-
-    private void initNewProjectFile(){
-        String xmlFilePath = projectDirURI + "\\project.xml";
+    public void initNewProjectFile(String name, ArrayList<Author> a){
+        String xmlFilePath = projectDirURI + "\\"+ projectName + FILE_EXTENSION;
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource();
+            DOMSource source = new DOMSource(FileWorker.constructProjectFile("HelloBook", a));
             StreamResult result = new StreamResult(new File(xmlFilePath));
             transformer.transform(source, result);
         } catch (ParserConfigurationException pce) {
@@ -53,4 +52,12 @@ public class ProjectFileSystem {
         }
     }
 
+    public void listProjects() {
+        final File folder = new File(projectDirURI);
+        for (final File fileEntry : folder.listFiles()) {
+            if (!fileEntry.isDirectory()) {
+                System.out.println(fileEntry.getName().replace(FILE_EXTENSION, ""));
+            }
+        }
+    }
 }
