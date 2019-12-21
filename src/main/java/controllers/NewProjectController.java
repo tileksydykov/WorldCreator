@@ -1,8 +1,11 @@
 package controllers;
 
 import com.sun.javafx.collections.ObservableListWrapper;
+import database.models.Author;
+import helpers.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -54,7 +57,28 @@ public class NewProjectController extends ControllerBase {
 
     @FXML
     void Next(ActionEvent event) {
+        String authorName = nameField.getText();
+        String auhtorEmail = emailField.getText();
+        String projectName = bookNameField.getText();
+        ArrayList<Author> a = new ArrayList<Author>();
+        a.add(new Author(authorName, auhtorEmail));
+        fileSystem.initNewProjectFile(projectName, a, bookType.getValue());
+
+        Node source = (Node)  event.getSource();
+        Stage s  = (Stage) source.getScene().getWindow();
+        s.close();
+
+        Stage stage = new Stage();
+        try{
+            stage.setMaximized(true);
+            stage.setTitle(projectName);
+            FXMLLoader l =loader.getLoader("MainScene");
+            stage.setScene(l.load());
+            MainController c = l.getController();
+            c.initProject(projectName);
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
 
     }
-
 }

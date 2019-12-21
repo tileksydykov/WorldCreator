@@ -24,23 +24,10 @@ public class ProjectFileSystem {
         String workingDirectory = System.getProperty("user.dir");
         projectDirURI = workingDirectory + PROJECTS_NODE;
         new File(projectDirURI+LASTPROJECT_NODE).mkdirs();
-        ArrayList<Author> a = new ArrayList<Author>();
-        a.add(new Author("hello", "tilek@mail.ru"));
-        initNewProjectFile("saf", a);
     }
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
-    }
-
-    public ProjectFileSystem(String projectName) {
-        this.projectName = projectName;
-        String workingDirectory = System.getProperty("user.dir");
-        projectDirURI = workingDirectory + PROJECTS_NODE;
-
-        ArrayList<Author> a = new ArrayList<Author>();
-        a.add(new Author("hello", "fgsjn@mail.ru"));
-        initNewProjectFile(projectName, a);
     }
 
     public static void main(String[] args) {
@@ -48,12 +35,12 @@ public class ProjectFileSystem {
         p.listProjects();
     }
 
-    public void initNewProjectFile(String name, ArrayList<Author> a){
+    public void initNewProjectFile(String name, ArrayList<Author> a, String projType){
         String xmlFilePath = projectDirURI + "\\"+ name + FILE_EXTENSION;
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(FileWorker.constructProjectFile("HelloBook", a));
+            DOMSource source = new DOMSource(FileWorker.constructProjectFile("HelloBook", a, projType));
             StreamResult result = new StreamResult(new File(xmlFilePath));
             transformer.transform(source, result);
         } catch (ParserConfigurationException pce) {

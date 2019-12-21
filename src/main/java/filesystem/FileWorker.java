@@ -24,7 +24,7 @@ public class FileWorker {
         return doc;
     }
 
-    public static Document constructProjectFile(String bookName, ArrayList<Author> authors) throws ParserConfigurationException {
+    public static Document constructProjectFile(String bookName, ArrayList<Author> authors, String type) throws ParserConfigurationException {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
         Element root = doc.createElement("project");
         doc.appendChild(root);
@@ -43,6 +43,9 @@ public class FileWorker {
             authors_el.appendChild(author);
         }
         root.appendChild(authors_el);
+        Element t = doc.createElement("type");
+        t.appendChild(doc.createTextNode(type));
+        root.appendChild(t);
         return doc;
     }
 }
