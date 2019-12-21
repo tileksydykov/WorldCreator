@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.controllerHelpers.MainDataHolder;
+import filesystem.models.Project;
 import helpers.Loader;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainController extends ControllerBase {
+    Project project;
     private MainDataHolder helper;
 
     @FXML
@@ -33,10 +35,7 @@ public class MainController extends ControllerBase {
     private ListView<Label> characterList;
 
     @FXML
-    public void initialize() {}
-
-    public void initProject(String projectName){
-        fileSystem.setProjectName(projectName);
+    public void initialize() {
         helper = new MainDataHolder();
         mainTree.setRoot(helper.getTree());
         mainTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<?>>() {
@@ -62,9 +61,20 @@ public class MainController extends ControllerBase {
         mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
     }
 
+    void saveProject(){
+        fileSystem.saveProject(project);
+    }
+
+    void refreshProject(){
+        project = fileSystem.readProject(project.getFileName());
+    }
+
+    void initProject(String projectName){
+        project = fileSystem.readProject(projectName);
+    }
+
     @FXML
     void addCharacter(ActionEvent event) {
-
         String s = addCharacterField.getText();
         addCharacterField.setText("");
 

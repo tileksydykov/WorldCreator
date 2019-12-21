@@ -69,7 +69,7 @@ public class ProjectFileSystem {
             File fXmlFile = new File(xmlFilePath);
             DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
-            p = FileWorker.readprojectFile(doc);
+            p = FileWorker.readProjectFile(doc);
             p.setFileName(projectName);
             return p;
         } catch (Exception e) {

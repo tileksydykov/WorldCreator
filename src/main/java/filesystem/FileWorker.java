@@ -38,19 +38,6 @@ public class FileWorker {
     private static final String CHAPTER_TITLE_TAG = "title";
     private static final String CHAPTER_BODY_TAG = "body";
 
-    public static Document constructCharacterFile(BookCharacter c) throws ParserConfigurationException {
-        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-        Element root = doc.createElement("character");
-        doc.appendChild(root);
-        Element name = doc.createElement("name");
-        name.appendChild(doc.createTextNode(c.getName()));
-        root.appendChild(name);
-        Element history = doc.createElement("history");
-        history.appendChild(doc.createTextNode(c.getHistory()));
-        root.appendChild(history);
-        return doc;
-    }
-
     public static Document constructProjectFile(Project p) throws ParserConfigurationException {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
         Element root = doc.createElement(PROJECT_TAG);
@@ -114,7 +101,7 @@ public class FileWorker {
         return doc;
     }
 
-    public static Project readprojectFile(Document doc){
+    public static Project readProjectFile(Document doc){
         doc.getDocumentElement().normalize();
         Project p = new Project();
         Element root = (Element) doc.getElementsByTagName(PROJECT_TAG).item(0);
