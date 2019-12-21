@@ -2,6 +2,7 @@ package filesystem;
 
 import database.models.Author;
 import database.models.BookCharacter;
+import filesystem.models.Project;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -24,15 +25,15 @@ public class FileWorker {
         return doc;
     }
 
-    public static Document constructProjectFile(String bookName, ArrayList<Author> authors, String type) throws ParserConfigurationException {
+    public static Document constructProjectFile(Project p) throws ParserConfigurationException {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
         Element root = doc.createElement("project");
         doc.appendChild(root);
         Element name = doc.createElement("name");
-        name.appendChild(doc.createTextNode(bookName));
+        name.appendChild(doc.createTextNode(p.getName()));
         root.appendChild(name);
         Element authors_el = doc.createElement("authors");
-        for (Author a : authors){
+        for (Author a : p.getAuthors()){
             Element author = doc.createElement("author");
             Element authorName = doc.createElement("name");
             authorName.appendChild(doc.createTextNode(a.getName()));
@@ -44,7 +45,7 @@ public class FileWorker {
         }
         root.appendChild(authors_el);
         Element t = doc.createElement("type");
-        t.appendChild(doc.createTextNode(type));
+        t.appendChild(doc.createTextNode(p.getType()));
         root.appendChild(t);
         return doc;
     }

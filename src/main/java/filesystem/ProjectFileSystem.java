@@ -1,6 +1,7 @@
 package filesystem;
 
 import database.models.Author;
+import filesystem.models.Project;
 import filesystem.models.ProjectFile;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,7 +41,20 @@ public class ProjectFileSystem {
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(FileWorker.constructProjectFile("HelloBook", a, projType));
+            DOMSource source = new DOMSource();
+            StreamResult result = new StreamResult(new File(xmlFilePath));
+            transformer.transform(source, result);
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
+
+    public void saveProject(Project p){
+        String xmlFilePath = projectDirURI + "\\"+ p.getFileName() + FILE_EXTENSION;
+        try {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(FileWorker.constructProjectFile(p));
             StreamResult result = new StreamResult(new File(xmlFilePath));
             transformer.transform(source, result);
         } catch (ParserConfigurationException pce) {

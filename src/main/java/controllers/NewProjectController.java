@@ -2,6 +2,7 @@ package controllers;
 
 import com.sun.javafx.collections.ObservableListWrapper;
 import database.models.Author;
+import filesystem.models.Project;
 import helpers.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +31,7 @@ public class NewProjectController extends ControllerBase {
     @FXML
     public void initialize(){
         ArrayList<String> a = new ArrayList<>();
+        a.add("Custom");
         a.add("Web novel");
         a.add("Light novel");
         a.add("Novel");
@@ -62,7 +64,12 @@ public class NewProjectController extends ControllerBase {
         String projectName = bookNameField.getText();
         ArrayList<Author> a = new ArrayList<Author>();
         a.add(new Author(authorName, auhtorEmail));
-        fileSystem.initNewProjectFile(projectName, a, bookType.getValue());
+        Project p = new Project();
+        p.setAuthors(a);
+        p.setFileName(projectName);
+        p.setName(projectName);
+        p.setType(bookType.getValue());
+        fileSystem.saveProject(p);
 
         Node source = (Node)  event.getSource();
         Stage s  = (Stage) source.getScene().getWindow();
