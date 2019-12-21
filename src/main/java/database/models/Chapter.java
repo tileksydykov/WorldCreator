@@ -11,6 +11,11 @@ public class Chapter implements Modelnterface {
 
     public Chapter(){}
 
+    public Chapter(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
     public Chapter(Book book, String title, String body) {
         this.book = book;
         this.title = title;

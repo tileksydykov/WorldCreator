@@ -20,7 +20,13 @@ public class BookCharacter implements Modelnterface {
 
     public BookCharacter(){}
 
-    public BookCharacter( String name, String history, Book book) {
+    public BookCharacter(String name, String history, String relation) {
+        this.name = name;
+        this.history = history;
+        this.relation = relation;
+    }
+
+    public BookCharacter(String name, String history, Book book) {
         this.name = name;
         this.history = history;
         this.book = book;

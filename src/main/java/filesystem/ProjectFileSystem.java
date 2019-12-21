@@ -3,7 +3,10 @@ package filesystem;
 import database.models.Author;
 import filesystem.models.Project;
 import filesystem.models.ProjectFile;
+import org.w3c.dom.Document;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -19,7 +22,7 @@ public class ProjectFileSystem {
 
     private final String FILE_EXTENSION = ".xml";
     private String projectName = "";
-    private String projectDirURI = "";
+    private String projectDirURI;
 
     public ProjectFileSystem(){
         String workingDirectory = System.getProperty("user.dir");
@@ -29,11 +32,6 @@ public class ProjectFileSystem {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
-    }
-
-    public static void main(String[] args) {
-        ProjectFileSystem p = new ProjectFileSystem();
-        p.listProjects();
     }
 
     public void initNewProjectFile(String name, ArrayList<Author> a, String projType){
@@ -62,6 +60,22 @@ public class ProjectFileSystem {
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
         }
+    }
+
+    public Project readProject(String projectName){
+        String xmlFilePath = projectDirURI + "\\"+ projectName + FILE_EXTENSION;
+        Project p;
+        try {
+            File fXmlFile = new File(xmlFilePath);
+            DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+            p = FileWorker.readprojectFile(doc);
+            p.setFileName(projectName);
+            return p;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void listProjects() {

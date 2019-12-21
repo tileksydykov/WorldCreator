@@ -18,6 +18,22 @@ public class Project {
     private ArrayList<BookCharacter> characters;
     private ArrayList<Chapter> chapters;
 
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", name='" + name + '\'' +
+                ", worldDescription='" + worldDescription + '\'' +
+                ", bookDescription='" + bookDescription + '\'' +
+                ", authors=" + authors +
+                ", bookIntro='" + bookIntro + '\'' +
+                ", characters=" + characters +
+                ", chapters=" + chapters +
+                '}';
+    }
+
     public Project() {
         this.id = 0;
         this.type = "";

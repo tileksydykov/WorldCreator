@@ -6,6 +6,8 @@ import database.models.Chapter;
 import filesystem.models.Project;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,6 +18,7 @@ public class FileWorker {
     private static final String PROJECT_TAG = "project";
     private static final String TYPE_TAG = "type";
     private static final String WORLD_DESC_TAG = "world";
+    private static final String BOOK_DESC_TAG = "book";
     private static final String BOOK_NAME_TAG = "name";
     private static final String BOOK_INTRO_TAG = "intro";
 
@@ -56,6 +59,7 @@ public class FileWorker {
         Element t = doc.createElement(TYPE_TAG);
         Element worldDescription = doc.createElement(WORLD_DESC_TAG);
         Element bookIntroduction = doc.createElement(BOOK_INTRO_TAG);
+        Element bookDescription = doc.createElement(BOOK_DESC_TAG);
         Element chapters = doc.createElement(ALL_CHAPTERS_TAG);
         Element characters = doc.createElement(ALL_CHARACTERS_TAG);
 
@@ -63,6 +67,7 @@ public class FileWorker {
         bookIntroduction.appendChild(doc.createTextNode(p.getBookIntro()));
         name.appendChild(doc.createTextNode(p.getName()));
         t.appendChild(doc.createTextNode(p.getType()));
+        bookDescription.appendChild(doc.createTextNode(p.getBookDescription()));
         for (Author a : p.getAuthors()){
             Element author = doc.createElement(AUTHOR_TAG);
             Element authorName = doc.createElement(AUTHOR_NAME_TAG);
@@ -97,12 +102,80 @@ public class FileWorker {
             chapters.appendChild(chapter);
         }
 
-        root.appendChild(worldDescription);
-        root.appendChild(bookIntroduction);
-        root.appendChild(t);
-        root.appendChild(authors_el);
         root.appendChild(name);
+        root.appendChild(t);
+        root.appendChild(worldDescription);
+        root.appendChild(bookDescription);
+        root.appendChild(bookIntroduction);
+        root.appendChild(characters);
+        root.appendChild(chapters);
+        root.appendChild(authors_el);
         doc.appendChild(root);
         return doc;
+    }
+
+    public static Project readprojectFile(Document doc){
+        doc.getDocumentElement().normalize();
+        Project p = new Project();
+        Element root = (Element) doc.getElementsByTagName(PROJECT_TAG).item(0);
+
+        // retrieve all data from doc
+        p.setType(root.getElementsByTagName(TYPE_TAG).item(0).getTextContent());
+        p.setName(root.getElementsByTagName(BOOK_NAME_TAG).item(0).getTextContent());
+        p.setWorldDescription(root.getElementsByTagName(WORLD_DESC_TAG).item(0).getTextContent());
+        p.setBookIntro(root.getElementsByTagName(BOOK_INTRO_TAG).item(0).getTextContent());
+        p.setBookDescription(root.getElementsByTagName(BOOK_DESC_TAG).item(0).getTextContent());
+
+        // get authors from doc
+        Element authors = (Element) doc.getElementsByTagName(ALL_AUTHORS_TAG).item(0);
+        NodeList aList = authors.getElementsByTagName(AUTHOR_TAG);
+        ArrayList<Author> authorsArray = new ArrayList<>();
+        for (int temp = 0; temp < aList.getLength(); temp++) {
+            Node nNode = aList.item(temp);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Author a = new Author();
+                Element eElement = (Element) nNode;
+                a.setName(eElement.getElementsByTagName(AUTHOR_NAME_TAG).item(0).getTextContent());
+                a.setEmail(eElement.getElementsByTagName(AUTHOR_EMAIL_TAG).item(0).getTextContent());
+                authorsArray.add(a);
+            }
+        }
+        p.setAuthors(authorsArray);
+
+        // get chapters from doc
+        Element chapters = (Element) doc.getElementsByTagName(ALL_CHAPTERS_TAG).item(0);
+        NodeList cList = chapters.getElementsByTagName(CHAPTER_TAG);
+        ArrayList<Chapter> chaptersArray = new ArrayList<>();
+        for (int temp = 0; temp < cList.getLength(); temp++) {
+            Node nNode = cList.item(temp);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Chapter a = new Chapter();
+                Element eElement = (Element) nNode;
+                a.setTitle(eElement.getElementsByTagName(CHAPTER_TITLE_TAG).item(0).getTextContent());
+                a.setBody(eElement.getElementsByTagName(CHAPTER_BODY_TAG).item(0).getTextContent());
+                chaptersArray.add(a);
+            }
+        }
+        p.setChapters(chaptersArray);
+
+        // get characters from doc
+        Element characters = (Element) doc.getElementsByTagName(ALL_CHARACTERS_TAG).item(0);
+        NodeList caList = characters.getElementsByTagName(CHARACTER_TAG);
+        ArrayList<BookCharacter> charactersArray = new ArrayList<>();
+        for (int temp = 0; temp < caList.getLength(); temp++) {
+            Node nNode = caList.item(temp);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                BookCharacter a = new BookCharacter();
+                Element eElement = (Element) nNode;
+                a.setName(eElement.getElementsByTagName(CHARACTER_NAME_TAG).item(0).getTextContent());
+                a.setHistory(eElement.getElementsByTagName(CHARACTER_HISTORY_TAG).item(0).getTextContent());
+                a.setRelation(eElement.getElementsByTagName(CHARATER_RELATION_TAG).item(0).getTextContent());
+
+                charactersArray.add(a);
+            }
+        }
+        p.setCharacters(charactersArray);
+
+        return p;
     }
 }
