@@ -29,7 +29,7 @@ public class NewProjectController extends ControllerBase {
     private ChoiceBox<String> bookType;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         ArrayList<String> a = new ArrayList<>();
         a.add("Custom");
         a.add("Web novel");
@@ -41,19 +41,19 @@ public class NewProjectController extends ControllerBase {
 
     @FXML
     void Back(ActionEvent event) {
-        Node source = (Node)  event.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
-        try{
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        try {
             stage.setScene(loader.getScene("HelloScene"));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
 
     @FXML
     void Close(ActionEvent event) {
-        Node source = (Node)  event.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
 
@@ -62,28 +62,38 @@ public class NewProjectController extends ControllerBase {
         String authorName = nameField.getText();
         String auhtorEmail = emailField.getText();
         String projectName = bookNameField.getText();
+        String type = bookType.getValue();
+        if (
+                auhtorEmail.isEmpty() ||
+                authorName.isEmpty() ||
+                projectName.isEmpty() ||
+                type.isEmpty()
+        ) {
+            return;
+        }
+
         ArrayList<Author> a = new ArrayList<Author>();
         a.add(new Author(authorName, auhtorEmail));
         Project p = new Project();
         p.setAuthors(a);
         p.setFileName(projectName);
         p.setName(projectName);
-        p.setType(bookType.getValue());
+        p.setType(type);
         fileSystem.saveProject(p);
 
-        Node source = (Node)  event.getSource();
-        Stage s  = (Stage) source.getScene().getWindow();
+        Node source = (Node) event.getSource();
+        Stage s = (Stage) source.getScene().getWindow();
         s.close();
 
         Stage stage = new Stage();
-        try{
+        try {
             stage.setMaximized(true);
             stage.setTitle(projectName);
-            FXMLLoader l =loader.getLoader("MainScene");
+            FXMLLoader l = loader.getLoader("MainScene");
             stage.setScene(l.load());
             MainController c = l.getController();
             c.initProject(projectName);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
 

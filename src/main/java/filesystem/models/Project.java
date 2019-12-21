@@ -1,6 +1,7 @@
 package filesystem.models;
 
 import database.models.Author;
+import database.models.BookCharacter;
 import database.models.Chapter;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Project {
     private String bookDescription;
     private ArrayList<Author> authors;
     private String bookIntro;
-    private ArrayList<Character> characters;
+    private ArrayList<BookCharacter> characters;
     private ArrayList<Chapter> chapters;
 
     public Project() {
@@ -94,11 +95,11 @@ public class Project {
         this.bookIntro = bookIntro;
     }
 
-    public ArrayList<Character> getCharacters() {
+    public ArrayList<BookCharacter> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(ArrayList<Character> characters) {
+    public void setCharacters(ArrayList<BookCharacter> characters) {
         this.characters = characters;
     }
 

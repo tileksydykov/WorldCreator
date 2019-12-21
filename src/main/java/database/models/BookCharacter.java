@@ -6,8 +6,17 @@ public class BookCharacter implements Modelnterface {
     private int id = 0;
     private String name = "";
     private String history = "";
+    private String relation = "";
     private int bookId = 0;
     private Book book;
+
+    public String getRelation() {
+        return relation;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
 
     public BookCharacter(){}
 
