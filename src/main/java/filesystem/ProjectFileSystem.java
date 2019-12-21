@@ -1,6 +1,7 @@
 package filesystem;
 
 import database.models.Author;
+import filesystem.models.ProjectFile;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 public class ProjectFileSystem {
     private final String PROJECTS_NODE = "\\Projects";
+    private final String LASTPROJECT_NODE = "\\Last";
 
     private final String FILE_EXTENSION = ".xml";
     private String projectName = "";
@@ -21,12 +23,21 @@ public class ProjectFileSystem {
     public ProjectFileSystem(){
         String workingDirectory = System.getProperty("user.dir");
         projectDirURI = workingDirectory + PROJECTS_NODE;
+        new File(projectDirURI+LASTPROJECT_NODE).mkdirs();
+        ArrayList<Author> a = new ArrayList<Author>();
+        a.add(new Author("hello", "tilek@mail.ru"));
+        initNewProjectFile("saf", a);
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public ProjectFileSystem(String projectName) {
         this.projectName = projectName;
         String workingDirectory = System.getProperty("user.dir");
         projectDirURI = workingDirectory + PROJECTS_NODE;
+
         ArrayList<Author> a = new ArrayList<Author>();
         a.add(new Author("hello", "fgsjn@mail.ru"));
         initNewProjectFile(projectName, a);
@@ -38,7 +49,7 @@ public class ProjectFileSystem {
     }
 
     public void initNewProjectFile(String name, ArrayList<Author> a){
-        String xmlFilePath = projectDirURI + "\\"+ projectName + FILE_EXTENSION;
+        String xmlFilePath = projectDirURI + "\\"+ name + FILE_EXTENSION;
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -59,5 +70,17 @@ public class ProjectFileSystem {
                 System.out.println(fileEntry.getName().replace(FILE_EXTENSION, ""));
             }
         }
+    }
+
+    public ArrayList<ProjectFile> getProjects() {
+        ArrayList<ProjectFile> projects = new ArrayList<>();
+        final File folder = new File(projectDirURI);
+        for (final File fileEntry : folder.listFiles()) {
+            if (!fileEntry.isDirectory()) {
+                ProjectFile f = new ProjectFile(fileEntry.getName().replace(FILE_EXTENSION, ""), fileEntry.getPath());
+                projects.add(f);
+            }
+        }
+        return projects;
     }
 }

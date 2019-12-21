@@ -33,9 +33,10 @@ public class MainController extends ControllerBase {
     private ListView<Label> characterList;
 
     @FXML
-    public void initialize() {
+    public void initialize() {}
 
-
+    public void initProject(String projectName){
+        fileSystem.setProjectName(projectName);
         helper = new MainDataHolder();
         mainTree.setRoot(helper.getTree());
         mainTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<?>>() {

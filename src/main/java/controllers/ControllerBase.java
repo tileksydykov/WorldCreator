@@ -1,13 +1,16 @@
 package controllers;
 
 import database.WorldCreatorDatabase;
+import filesystem.ProjectFileSystem;
 import helpers.Loader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 abstract class ControllerBase {
     Loader loader = new Loader();
+    ProjectFileSystem fileSystem = new ProjectFileSystem();
     public ControllerBase() {}
 
     void alert(String messageToUser){

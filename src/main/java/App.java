@@ -15,8 +15,8 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         createDatabase();
         primaryStage.setTitle("World Creator");
-        primaryStage.setScene(loader.getScene("MainScene"));
-        primaryStage.setMaximized(true);
+        primaryStage.setScene(loader.getScene("HelloScene"));
+        primaryStage.setMaximized(false);
         primaryStage.show();
     }
 
