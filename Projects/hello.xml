@@ -1,1 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project><name>hello</name><type>novel</type><world>cool world</world><book>boookDesc</book><intro>cool intro</intro><characters><character><characterName>name</characterName><history>his</history><relation>fdqwf</relation></character></characters><chapters><chapter><title>dfa</title><body>dfa</body></chapter></chapters><authors><author><authorName>tilek</authorName><authorEmail>hell@mail.ru</authorEmail></author></authors></project>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+    <name>hello</name>
+    <type>novel</type>
+    <world>cool world</world>
+    <book>boookDesc</book>
+    <intro>cool intro</intro>
+    <characters>
+        <character id="749966215">
+            <characterName>name</characterName>
+            <history>his</history>
+            <relation>fdqwf</relation>
+        </character>
+    </characters>
+    <chapters>
+        <chapter id="-1108902733">
+            <title>dfa</title>
+            <body>dfa</body>
+        </chapter>
+    </chapters>
+    <authors>
+        <author id="-411083607">
+            <authorName>tilek</authorName>
+            <authorEmail>hell@mail.ru</authorEmail>
+        </author>
+    </authors>
+</project>

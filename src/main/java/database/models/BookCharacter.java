@@ -1,8 +1,9 @@
 package database.models;
 
-import database.models.modelhelper.Modelnterface;
+import database.models.modelhelper.Model;
+import database.models.modelhelper.ModelInterface;
 
-public class BookCharacter implements Modelnterface {
+public class BookCharacter extends Model {
     private int id = 0;
     private String name = "";
     private String history = "";
@@ -18,15 +19,19 @@ public class BookCharacter implements Modelnterface {
         this.relation = relation;
     }
 
-    public BookCharacter(){}
+    public BookCharacter(){
+        id = generateId();
+    }
 
     public BookCharacter(String name, String history, String relation) {
+        id = generateId();
         this.name = name;
         this.history = history;
         this.relation = relation;
     }
 
     public BookCharacter(String name, String history, Book book) {
+        id = generateId();
         this.name = name;
         this.history = history;
         this.book = book;
@@ -40,7 +45,7 @@ public class BookCharacter implements Modelnterface {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

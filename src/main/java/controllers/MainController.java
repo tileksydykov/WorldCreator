@@ -19,14 +19,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainController extends ControllerBase {
-    Project project;
+    public Project project;
     private MainDataHolder helper;
 
     @FXML
     private TreeView<?> mainTree;
 
     @FXML
-    private TabPane mainPane;
+    public TabPane mainPane;
 
     @FXML
     private TextField addCharacterField;
@@ -36,29 +36,7 @@ public class MainController extends ControllerBase {
 
     @FXML
     public void initialize() {
-        helper = new MainDataHolder();
-        mainTree.setRoot(helper.getTree());
-        mainTree.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<?>>() {
-            @Override
-            public void changed(ObservableValue<? extends TreeItem<?>> observable, TreeItem<?> oldValue, TreeItem<?> newValue) {
-                String tabName = newValue.getValue().toString();
-                boolean exist = false;
-                Tab t = new Tab();
-                for (Tab b : mainPane.getTabs()) {
-                    if (b.getText().equals(tabName)) {
-                        t = b;
-                        exist = true;
-                    }
-                }
-                if (!exist) {
-                    t.setText(tabName);
-                    t.setContent(helper.getPane(tabName));
-                    mainPane.getTabs().add(t);
-                }
-                mainPane.getSelectionModel().select(t);
-            }
-        });
-        mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
+        helper = new MainDataHolder(this);
     }
 
     void saveProject(){
@@ -71,6 +49,9 @@ public class MainController extends ControllerBase {
 
     void initProject(String projectName){
         project = fileSystem.readProject(projectName);
+        mainTree.setRoot(helper.getTree());
+
+        mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
     }
 
     @FXML
@@ -106,7 +87,6 @@ public class MainController extends ControllerBase {
 
         characterList.getItems().add(characterList.getItems().size(), c);
         characterList.scrollTo(characterList.getItems().size() - 1);
-        // list.edit(list.getItems().size() - 1);
 
         new AnimationTimer() {
             int frameCount = 0 ;

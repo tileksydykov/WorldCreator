@@ -53,7 +53,7 @@ public class HelloController extends ControllerBase {
                         c.initProject(p.getName());
                         stage.show();
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        e.printStackTrace();
                     }
                 }
             });

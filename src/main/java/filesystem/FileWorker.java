@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class FileWorker {
 
+    private static  final String ID = "id";
+
     private static final String PROJECT_TAG = "project";
     private static final String TYPE_TAG = "type";
     private static final String WORLD_DESC_TAG = "world";
@@ -59,6 +61,7 @@ public class FileWorker {
             Element author = doc.createElement(AUTHOR_TAG);
             Element authorName = doc.createElement(AUTHOR_NAME_TAG);
             Element authorEmail = doc.createElement(AUTHOR_EMAIL_TAG);
+            author.setAttribute(ID, a.getId().toString());
             authorName.appendChild(doc.createTextNode(a.getName()));
             authorEmail.appendChild(doc.createTextNode(a.getEmail()));
             author.appendChild(authorName);
@@ -70,6 +73,7 @@ public class FileWorker {
             Element characterName = doc.createElement(CHARACTER_NAME_TAG);
             Element characterHistory = doc.createElement(CHARACTER_HISTORY_TAG);
             Element characterRelation = doc.createElement(CHARATER_RELATION_TAG);
+            character.setAttribute(ID, c.getId().toString());
             characterName.appendChild(doc.createTextNode(c.getName()));
             characterHistory.appendChild(doc.createTextNode(c.getHistory()));
             characterRelation.appendChild(doc.createTextNode(c.getRelation()));
@@ -82,6 +86,7 @@ public class FileWorker {
             Element chapter = doc.createElement(CHAPTER_TAG);
             Element chapterBody = doc.createElement(CHAPTER_BODY_TAG);
             Element chapterTitle = doc.createElement(CHAPTER_TITLE_TAG);
+            chapter.setAttribute(ID, c.getId().toString());
             chapterBody.appendChild(doc.createTextNode(c.getTitle()));
             chapterTitle.appendChild(doc.createTextNode(c.getTitle()));
             chapter.appendChild(chapterTitle);
@@ -122,6 +127,7 @@ public class FileWorker {
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Author a = new Author();
                 Element eElement = (Element) nNode;
+                a.setId(Integer.valueOf(eElement.getAttribute(ID)));
                 a.setName(eElement.getElementsByTagName(AUTHOR_NAME_TAG).item(0).getTextContent());
                 a.setEmail(eElement.getElementsByTagName(AUTHOR_EMAIL_TAG).item(0).getTextContent());
                 authorsArray.add(a);
@@ -138,6 +144,7 @@ public class FileWorker {
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Chapter a = new Chapter();
                 Element eElement = (Element) nNode;
+                a.setId(Integer.valueOf(eElement.getAttribute(ID)));
                 a.setTitle(eElement.getElementsByTagName(CHAPTER_TITLE_TAG).item(0).getTextContent());
                 a.setBody(eElement.getElementsByTagName(CHAPTER_BODY_TAG).item(0).getTextContent());
                 chaptersArray.add(a);
@@ -154,6 +161,7 @@ public class FileWorker {
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 BookCharacter a = new BookCharacter();
                 Element eElement = (Element) nNode;
+                a.setId(Integer.valueOf(eElement.getAttribute(ID)));
                 a.setName(eElement.getElementsByTagName(CHARACTER_NAME_TAG).item(0).getTextContent());
                 a.setHistory(eElement.getElementsByTagName(CHARACTER_HISTORY_TAG).item(0).getTextContent());
                 a.setRelation(eElement.getElementsByTagName(CHARATER_RELATION_TAG).item(0).getTextContent());

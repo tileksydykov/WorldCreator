@@ -1,9 +1,9 @@
 package database.models;
 
-import database.models.modelhelper.Modelnterface;
+import database.models.modelhelper.ModelInterface;
 
-public class Book implements Modelnterface {
-    private int id = 0;
+public class Book implements ModelInterface {
+    private Integer id = 0;
     private String name = "";
     private String world = "";
     private String description;
@@ -36,7 +36,7 @@ public class Book implements Modelnterface {
         this.authors = authors;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

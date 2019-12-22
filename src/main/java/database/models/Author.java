@@ -1,16 +1,22 @@
 package database.models;
 
-import database.models.modelhelper.Modelnterface;
+import database.models.modelhelper.Model;
+import database.models.modelhelper.ModelInterface;
 
-public class Author implements Modelnterface {
-    private int id = 0;
+import java.util.Arrays;
+
+public class Author extends Model {
+    private Integer id = 0;
     private String name = "";
     private String email = "";
     private Book[] books;
 
-    public Author() {}
+    public Author() {
+        id = generateId();
+    }
 
     public Author(String name, String email) {
+        id = generateId();
         this.name = name;
         this.email = email;
     }
@@ -22,7 +28,7 @@ public class Author implements Modelnterface {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -52,5 +58,15 @@ public class Author implements Modelnterface {
 
     public void setBooks(Book[] books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", books=" + Arrays.toString(books) +
+                '}';
     }
 }

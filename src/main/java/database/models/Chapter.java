@@ -1,17 +1,21 @@
 package database.models;
 
-import database.models.modelhelper.Modelnterface;
+import database.models.modelhelper.Model;
+import database.models.modelhelper.ModelInterface;
 
-public class Chapter implements Modelnterface {
+public class Chapter extends Model {
     private int id;
     private Book book;
     private String title;
     private String body;
     private int bookOrder;
 
-    public Chapter(){}
+    public Chapter(){
+        id = generateId();
+    }
 
     public Chapter(String title, String body) {
+        id = generateId();
         this.title = title;
         this.body = body;
     }
@@ -37,7 +41,7 @@ public class Chapter implements Modelnterface {
         this.bookOrder = bookOrder;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

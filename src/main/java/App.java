@@ -17,6 +17,7 @@ public class App extends Application {
         primaryStage.setTitle("World Creator");
         primaryStage.setScene(loader.getScene("HelloScene"));
         primaryStage.setMaximized(false);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

@@ -9,7 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 abstract class ControllerBase {
-    Loader loader = new Loader();
+    public Loader loader = new Loader();
     ProjectFileSystem fileSystem = new ProjectFileSystem();
     public ControllerBase() {}
 
