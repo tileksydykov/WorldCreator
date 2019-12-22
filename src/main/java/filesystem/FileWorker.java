@@ -8,9 +8,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileWorker {
@@ -87,7 +96,7 @@ public class FileWorker {
             Element chapterBody = doc.createElement(CHAPTER_BODY_TAG);
             Element chapterTitle = doc.createElement(CHAPTER_TITLE_TAG);
             chapter.setAttribute(ID, c.getId().toString());
-            chapterBody.appendChild(doc.createTextNode(c.getTitle()));
+            chapterBody.appendChild(doc.createTextNode(c.getBody()));
             chapterTitle.appendChild(doc.createTextNode(c.getTitle()));
             chapter.appendChild(chapterTitle);
             chapter.appendChild(chapterBody);
@@ -172,5 +181,25 @@ public class FileWorker {
         p.setCharacters(charactersArray);
 
         return p;
+    }
+
+    public static Document updateChapter(Document doc, Chapter c){
+
+        Element chapters = (Element) doc.getElementsByTagName(ALL_CHAPTERS_TAG).item(0);
+        NodeList cList = chapters.getElementsByTagName(CHAPTER_TAG);
+
+        for (int temp = 0; temp < cList.getLength(); temp++) {
+            Node nNode = cList.item(temp);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element chapterElement = (Element) nNode;
+                Integer id = Integer.valueOf(chapterElement.getAttribute(ID));
+                if(id.equals(c.getId())){
+                    chapterElement.getElementsByTagName(CHAPTER_BODY_TAG).item(0).setTextContent(c.getBody());
+                    chapterElement.getElementsByTagName(CHAPTER_TITLE_TAG).item(0).setTextContent(c.getTitle());
+                }
+            }
+        }
+
+        return doc;
     }
 }

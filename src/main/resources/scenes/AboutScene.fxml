@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/r_dark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <Label prefHeight="61.0" prefWidth="584.0" stylesheets="@../styles/dark.css" text="About" BorderPane.alignment="CENTER">
+      <Label prefHeight="61.0" prefWidth="584.0" stylesheets="@../styles/r_dark.css" text="About" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets top="20.0" />
          </opaqueInsets>

@@ -2,9 +2,12 @@ package filesystem;
 
 import database.models.Author;
 import database.models.BookCharacter;
+import database.models.Chapter;
 import filesystem.models.Project;
 import filesystem.models.ProjectFile;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,6 +18,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProjectFileSystem {
@@ -153,4 +157,31 @@ public class ProjectFileSystem {
         }
         return character;
     }
+
+    public void updateChapter(Chapter c){
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(projectDirURI + "\\" +  projectName + FILE_EXTENSION);
+
+            doc = FileWorker.updateChapter(doc, c);
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(projectDirURI + "\\" + projectName + FILE_EXTENSION));
+            transformer.transform(source, result);
+
+
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (SAXException sae) {
+            sae.printStackTrace();
+        }
+    }
+
 }

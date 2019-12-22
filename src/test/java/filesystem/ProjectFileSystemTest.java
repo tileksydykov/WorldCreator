@@ -56,7 +56,16 @@ public class ProjectFileSystemTest {
     }
 
     @Test
-    public void getProjects() {
+    public void updateChapters( ) {
+        ProjectFileSystem pfs = new ProjectFileSystem();
+        pfs.setProjectName("hello");
+
+        Chapter c = new Chapter();
+        c.setBody("body");
+        c.setId(1613845581);
+        c.setTitle("name");
+
+        pfs.updateChapter(c);
     }
 
     @Test
