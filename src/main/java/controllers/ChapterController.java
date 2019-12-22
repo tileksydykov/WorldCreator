@@ -2,6 +2,7 @@ package controllers;
 
 import database.models.Chapter;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -20,15 +21,16 @@ public class ChapterController extends ControllerBase {
     @FXML
     private TextField titleField;
 
-
-
     public void init(Chapter c, MainController context) {
         parent = context;
         chapter = c;
 
-
         StyleClassedTextArea textArea = new StyleClassedTextArea();
         textArea.setWrapText(true);
+
+        textArea.setPadding(new Insets(20));
+
+        textArea.setMaxWidth(800);
 
         Board.setCenter(textArea);
 

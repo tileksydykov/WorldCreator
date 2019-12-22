@@ -1,13 +1,13 @@
-.root {
-    -fx-base: rgb(232, 232, 232);
-    -fx-background: rgb(224, 224, 224);
+/** .root {
+    -fx-base: rgb(123, 153, 168);
+    -fx-background: rgb(210, 210, 210);
     -fx-color: derive(-fx-base, 10%);
     -fx-control-inner-background: rgb(203, 203, 203);
     -fx-control-inner-background-alt: derive(-fx-control-inner-background, 2.5%);
-    -fx-light-text-color: rgb(220, 220, 220);
-    -fx-mid-text-color: rgb(100, 100, 100);
-    -fx-dark-text-color: rgb(183, 248, 255);
-    -fx-accent: rgb(0, 80, 100);
+    -fx-light-text-color: rgb(41, 40, 45);
+    -fx-mid-text-color: rgb(37, 37, 37);
+    -fx-dark-text-color: rgb(20, 20, 20);
+    -fx-accent: rgb(140, 133, 135);
     -fx-selection-bar-non-focused: rgb(192, 198, 243);
 }
 .text-input {-fx-prompt-text-fill: derive(-fx-control-inner-background, +50%);}

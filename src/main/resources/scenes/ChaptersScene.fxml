@@ -7,13 +7,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChaptersController">
+<BorderPane prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChaptersController">
    <bottom>
       <ListView fx:id="list" prefHeight="849.0" prefWidth="1400.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="100.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
          <left>
             <Label text="Title" BorderPane.alignment="CENTER">
                <BorderPane.margin>

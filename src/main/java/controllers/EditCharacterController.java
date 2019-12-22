@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class EditCharacterController extends ControllerBase{
     BookCharacter character;
-    ControllerBase parent;
+    MainController parent;
 
     @FXML
     private TextArea historyField;
@@ -33,10 +33,11 @@ public class EditCharacterController extends ControllerBase{
 
         Node source = (Node)  event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
+        parent.updateUI();
         stage.close();
     }
 
-    public void init(BookCharacter character, ControllerBase context) {
+    public void init(BookCharacter character, MainController context) {
         this.character = character;
         parent = context;
         nameField.setText(character.getName());
