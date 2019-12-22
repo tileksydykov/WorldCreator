@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project><name>hello</name><type>novel</type><world>cool world</world><book>boookDesc</book><intro>cool intro</intro><characters><character id="749966215"><characterName>name</characterName><history>his</history><relation>fdqwf</relation></character><character id="97077726"><characterName>dht</characterName><history>sergr</history><relation>gsawerg</relation></character><character id="-198225952"><characterName>rhdy5</characterName><history>gserg</history><relation>edxgre</relation></character><character id="-677405367"><characterName>estg</characterName><history>gswerg</history><relation>wagts</relation></character></characters><chapters><chapter id="-1108902733"><title>dfa</title><body>dfa</body></chapter></chapters><authors><author id="-411083607"><authorName>Tilek Sydykov</authorName><authorEmail>tilekfromkg@gmail.com</authorEmail></author></authors></project>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+    <name>hello</name>
+    <type>novel</type>
+    <world>cool world</world>
+    <book>Hello dfsda;lgvnj';rgo agvknjas g ]pgajm[wrolag wrak]gp
+        ar[g
+        praewjgwkar kgwaropg k
+        ro
+        [aj riagnjr;arwlákg;kwnaglẃanjrfge qjgbnŕwpiag ;jrwag
+        o[ ag[owajwrag
+        erw pgak rwakgn [aojwahjgniprwangfepwfgwag
+        wagwar]g
+        war[gj
+        [waogwgrweapgina
+        w [goew
+        garawe[g
+    </book>
+    <intro>cool intro</intro>
+    <characters>
+        <character id="749966215">
+            <characterName>name</characterName>
+            <history>his</history>
+            <relation>fdqwf</relation>
+        </character>
+        <character id="97077726">
+            <characterName>dht</characterName>
+            <history>sergr</history>
+            <relation>gsawerg</relation>
+        </character>
+        <character id="-198225952">
+            <characterName>rhdy5</characterName>
+            <history>gserg</history>
+            <relation>edxgre</relation>
+        </character>
+        <character id="-677405367">
+            <characterName>estg</characterName>
+            <history>gswerg</history>
+            <relation>wagts</relation>
+        </character>
+    </characters>
+    <chapters>
+        <chapter id="-1108902733">
+            <title>dfa</title>
+            <body>dfa</body>
+        </chapter>
+    </chapters>
+    <authors>
+        <author id="-411083607">
+            <authorName>Tilek Sydykov</authorName>
+            <authorEmail>tilekfromkg@gmail.com</authorEmail>
+        </author>
+    </authors>
+</project>

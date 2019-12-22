@@ -24,16 +24,12 @@ public class MainController extends ControllerBase {
     public Project project;
     private MainDataHolder helper;
     private MainController context;
-
     @FXML
     private TreeView<?> mainTree;
-
     @FXML
     public TabPane mainPane;
-
     @FXML
     private TextField addCharacterField;
-
     @FXML
     private ListView<Label> characterList;
 
@@ -60,14 +56,14 @@ public class MainController extends ControllerBase {
         mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
     }
 
-    void initCharactes(){
+    private void initCharactes() {
         ArrayList<BookCharacter> character = project.getCharacters();
-        for (BookCharacter c: character) {
+        for (BookCharacter c : character) {
             addCharacterTolist(c);
         }
     }
 
-    void addCharacterTolist(BookCharacter character){
+    private void addCharacterTolist(BookCharacter character) {
         Label label = new Label();
         label.setText(character.getName());
         label.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -125,7 +121,8 @@ public class MainController extends ControllerBase {
         addCharacterTolist(character);
     }
 
-    @FXML void openNewProject(ActionEvent event) {
+    @FXML
+    void openNewProject(ActionEvent event) {
         Stage newWindow = new Stage();
         Scene scene;
         try {
@@ -138,7 +135,8 @@ public class MainController extends ControllerBase {
         newWindow.show();
     }
 
-    @FXML void openAbout(ActionEvent event) {
+    @FXML
+    void openAbout(ActionEvent event) {
         Stage newWindow = new Stage();
         Scene scene;
         try {

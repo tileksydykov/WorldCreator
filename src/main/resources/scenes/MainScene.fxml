@@ -23,6 +23,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openNewProject" text=" New Project" />
                   <MenuItem mnemonicParsing="false" text="Export" />
+                  <MenuItem mnemonicParsing="false" text="Settings" />
                   <MenuItem mnemonicParsing="false" text="Exit" />
             </items>
           </Menu>
@@ -40,7 +41,7 @@
       </MenuBar>
    </top>
    <left>
-      <TreeView fx:id="mainTree" prefHeight="375.0" prefWidth="179.0" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="mainTree" prefHeight="375.0" prefWidth="196.0" BorderPane.alignment="CENTER" />
    </left>
    <center>
       <TabPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />

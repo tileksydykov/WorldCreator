@@ -1,19 +1,15 @@
 package controllers.controllerHelpers;
 
+import controllers.BookDescriptionController;
 import controllers.EditAuthorController;
 import controllers.MainController;
+import controllers.WorldDescriptionController;
 import database.models.Author;
 import database.models.Book;
 import database.models.BookCharacter;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -36,22 +32,8 @@ public class MainDataHolder extends DataHolder {
         for (Author a : context.project.getAuthors()) {
             Label auth = new Label(a.getName());
             auth.setOnMouseClicked((MouseEvent e) -> {
-                Author au = a;
                 String tabName = a.getName() + " : Author";
-                boolean exist = false;
-                Tab t = new Tab();
-                for (Tab b : context.mainPane.getTabs()) {
-                    if (b.getText().equals(tabName)) {
-                        t = b;
-                        exist = true;
-                    }
-                }
-                if (!exist) {
-                    t.setText(tabName);
-                    t.setContent(getPane(au));
-                    context.mainPane.getTabs().add(t);
-                }
-                context.mainPane.getSelectionModel().select(t);
+                addTab(tabName, getPane(a));
             });
             authorsItem.getChildren().add(new TreeItem(auth));
         }
@@ -59,13 +41,16 @@ public class MainDataHolder extends DataHolder {
         rootItem.getChildren().add(authorsItem);
 
         Label labelBookDescr = new Label("Book description");
-        labelBookDescr.setOnMouseClicked((MouseEvent e) -> {
-
-        });
+        labelBookDescr.setOnMouseClicked((MouseEvent e) ->
+            addTab( context.project.getName() +  " : Book description", getBookDescriptionPane()));
         TreeItem desc = new TreeItem(labelBookDescr);
 
         rootItem.getChildren().add(desc);
-        rootItem.getChildren().add(new TreeItem("World description"));
+
+        Label worldDesc = new Label("World description");
+        worldDesc.setOnMouseClicked((MouseEvent e) ->
+                addTab( context.project.getName() +  " : World Description", getWorldDescriptionPane()));
+        rootItem.getChildren().add(new TreeItem(worldDesc));
         rootItem.getChildren().add(new TreeItem("Introduction"));
 
         TreeItem chapterItem = new TreeItem("Chapters");
@@ -75,6 +60,23 @@ public class MainDataHolder extends DataHolder {
         rootItem.getChildren().add(chapterItem);
 
         return rootItem;
+    }
+
+    private void addTab(String tabName, Pane pane){
+        Tab t = new Tab();
+        boolean exist = false;
+        for (Tab b : context.mainPane.getTabs()) {
+            if (b.getText().equals(tabName)) {
+                t = b;
+                exist = true;
+            }
+        }
+        if (!exist) {
+            t.setText(tabName);
+            t.setContent(pane);
+            context.mainPane.getTabs().add(t);
+        }
+        context.mainPane.getSelectionModel().select(t);
     }
 
     public Pane getPane(Author a){
@@ -104,5 +106,33 @@ public class MainDataHolder extends DataHolder {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private Pane getBookDescriptionPane(){
+        BorderPane p = new BorderPane();
+        try{
+            FXMLLoader l = context.loader.getLoader("BookDescription");
+            BorderPane pane = l.load();
+            p = pane;
+            BookDescriptionController c = l.getController();
+            c.init(context);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return p;
+    }
+
+    private Pane getWorldDescriptionPane(){
+        BorderPane p = new BorderPane();
+        try{
+            FXMLLoader l = context.loader.getLoader("WorldDescription");
+            BorderPane pane = l.load();
+            p = pane;
+            WorldDescriptionController c = l.getController();
+            c.init(context);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return p;
     }
 }
