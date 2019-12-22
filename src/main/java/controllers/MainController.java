@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.controllerHelpers.MainDataHolder;
+import database.models.BookCharacter;
 import filesystem.models.Project;
 import helpers.Loader;
 import javafx.animation.AnimationTimer;
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class MainController extends ControllerBase {
     public Project project;
     private MainDataHolder helper;
+    private MainController context;
 
     @FXML
     private TreeView<?> mainTree;
@@ -36,7 +38,7 @@ public class MainController extends ControllerBase {
 
     @FXML
     public void initialize() {
-
+        context = this;
     }
 
     void saveProject() {
@@ -65,6 +67,11 @@ public class MainController extends ControllerBase {
             return;
         }
 
+        BookCharacter character = new BookCharacter();
+        character.setName(s);
+
+        fileSystem.addCharacter(character);
+
         Label c = new Label();
         c.setText(s);
         c.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -80,9 +87,10 @@ public class MainController extends ControllerBase {
                         System.out.println(e.toString());
                     }
                     EditCharacterController c = l.getController();
-                    c.setNameField(s);
+                    c.init(character, context);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.showAndWait();
+
                 }
             }
         });

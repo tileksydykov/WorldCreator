@@ -1,6 +1,8 @@
 package filesystem;
 
 import database.models.Author;
+import database.models.Book;
+import database.models.BookCharacter;
 import filesystem.models.Project;
 import filesystem.models.ProjectFile;
 import org.w3c.dom.Document;
@@ -114,5 +116,42 @@ public class ProjectFileSystem {
         }
         p.setAuthors(newArray);
         saveProject(p);
+    }
+
+    public void saveCharacter(BookCharacter c) {
+        Project p = readProject(projectName);
+        ArrayList<BookCharacter> characters = p.getCharacters();
+        ArrayList<BookCharacter> newArray = new ArrayList<>();
+        int size = characters.size();
+        for (int i = 0; i < size; i++) {
+            BookCharacter b = characters.get(i);
+            if (b.getId().equals(c.getId())) {
+                newArray.add(c);
+            } else {
+                newArray.add(b);
+            }
+        }
+        p.setCharacters(newArray);
+        saveProject(p);
+    }
+
+    public void addCharacter(BookCharacter c) {
+        Project p = readProject(projectName);
+        ArrayList<BookCharacter> characters = p.getCharacters();
+        characters.add(c);
+        p.setCharacters(characters);
+        saveProject(p);
+    }
+
+    public BookCharacter findCharacterByName(String name) {
+        Project p = readProject(projectName);
+        ArrayList<BookCharacter> characters = p.getCharacters();
+        BookCharacter character = null;
+        for (BookCharacter c : characters) {
+            if (c.getName().equals(name)) {
+                character = c;
+            }
+        }
+        return character;
     }
 }

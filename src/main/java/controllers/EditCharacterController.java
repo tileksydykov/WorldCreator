@@ -1,5 +1,6 @@
 package controllers;
 
+import database.models.BookCharacter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -10,7 +11,8 @@ import javafx.stage.Stage;
 
 
 public class EditCharacterController extends ControllerBase{
-    int id;
+    BookCharacter character;
+    ControllerBase parent;
 
     @FXML
     private TextArea historyField;
@@ -23,24 +25,22 @@ public class EditCharacterController extends ControllerBase{
 
     @FXML
     void save(ActionEvent event) {
+        character.setName(nameField.getText());
+        character.setRelation(relationField.getText());
+        character.setHistory(historyField.getText());
+
+        parent.fileSystem.saveCharacter(character);
+
         Node source = (Node)  event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setHistoryField(String history) {
-        this.historyField.setText(history);
-    }
-
-    public void setRelationField(String relation) {
-        this.relationField.setText(relation);
-    }
-
-    public void setNameField(String name) {
-        this.nameField.setText(name);
+    public void init(BookCharacter character, ControllerBase context) {
+        this.character = character;
+        parent = context;
+        nameField.setText(character.getName());
+        historyField.setText(character.getHistory());
+        relationField.setText(character.getRelation());
     }
 }
