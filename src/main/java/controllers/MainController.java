@@ -18,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainController extends ControllerBase {
     public Project project;
@@ -55,31 +56,26 @@ public class MainController extends ControllerBase {
         helper = new MainDataHolder(this);
         mainTree.setRoot(helper.getTree());
 
+        initCharactes();
         mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
     }
 
-    @FXML
-    void addCharacter(ActionEvent event) {
-        String s = addCharacterField.getText();
-        addCharacterField.setText("");
-
-        if (s.isEmpty()) {
-            return;
+    void initCharactes(){
+        ArrayList<BookCharacter> character = project.getCharacters();
+        for (BookCharacter c: character) {
+            addCharacterTolist(c);
         }
+    }
 
-        BookCharacter character = new BookCharacter();
-        character.setName(s);
-
-        fileSystem.addCharacter(character);
-
-        Label c = new Label();
-        c.setText(s);
-        c.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    void addCharacterTolist(BookCharacter character){
+        Label label = new Label();
+        label.setText(character.getName());
+        label.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (event != null) {
                     Stage stage = new Stage();
-                    stage.setTitle("Edit character: " + s);
+                    stage.setTitle("Edit character: " + character.getName());
                     Loader l = loader.getLoader("EditCharacterScene");
                     try {
                         stage.setScene(new Scene(l.load()));
@@ -95,7 +91,7 @@ public class MainController extends ControllerBase {
             }
         });
 
-        characterList.getItems().add(characterList.getItems().size(), c);
+        characterList.getItems().add(characterList.getItems().size(), label);
         characterList.scrollTo(characterList.getItems().size() - 1);
 
         new AnimationTimer() {
@@ -114,7 +110,22 @@ public class MainController extends ControllerBase {
     }
 
     @FXML
-    void openNewProject(ActionEvent event) {
+    void addCharacter(ActionEvent event) {
+        String s = addCharacterField.getText();
+        addCharacterField.setText("");
+
+        if (s.isEmpty()) {
+            return;
+        }
+
+        BookCharacter character = new BookCharacter();
+        character.setName(s);
+
+        fileSystem.addCharacter(character);
+        addCharacterTolist(character);
+    }
+
+    @FXML void openNewProject(ActionEvent event) {
         Stage newWindow = new Stage();
         Scene scene;
         try {
@@ -127,8 +138,7 @@ public class MainController extends ControllerBase {
         newWindow.show();
     }
 
-    @FXML
-    void openAbout(ActionEvent event) {
+    @FXML void openAbout(ActionEvent event) {
         Stage newWindow = new Stage();
         Scene scene;
         try {
