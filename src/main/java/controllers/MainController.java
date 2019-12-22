@@ -5,12 +5,8 @@ import database.models.BookCharacter;
 import filesystem.models.Project;
 import helpers.Loader;
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -66,24 +62,20 @@ public class MainController extends ControllerBase {
     private void addCharacterTolist(BookCharacter character) {
         Label label = new Label();
         label.setText(character.getName());
-        label.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event != null) {
-                    Stage stage = new Stage();
-                    stage.setTitle("Edit character: " + character.getName());
-                    Loader l = loader.getLoader("EditCharacterScene");
-                    try {
-                        stage.setScene(new Scene(l.load()));
-                    } catch (IOException e) {
-                        System.out.println(e.toString());
-                    }
-                    EditCharacterController c = l.getController();
-                    c.init(character, context);
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.showAndWait();
-
+        label.setOnMouseClicked((MouseEvent e) -> {
+            if (e != null) {
+                Stage stage = new Stage();
+                stage.setTitle("Edit character: " + character.getName());
+                Loader l = loader.getLoader("EditCharacterScene");
+                try {
+                    stage.setScene(new Scene(l.load()));
+                } catch (IOException exc) {
+                    System.out.println(exc.toString());
                 }
+                EditCharacterController c = l.getController();
+                c.init(character, context);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
             }
         });
 
@@ -147,6 +139,16 @@ public class MainController extends ControllerBase {
         newWindow.setTitle("New Project Initialization");
         newWindow.setScene(scene);
         newWindow.show();
+    }
+
+    public void save() {
+        fileSystem.saveProject(project);
+    }
+
+    public void updateUI(){
+        String projName = project.getName();
+        project = fileSystem.readProject(projName);
+        mainTree.setRoot(helper.getTree());
     }
 }
 

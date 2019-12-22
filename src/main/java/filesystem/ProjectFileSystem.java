@@ -1,7 +1,6 @@
 package filesystem;
 
 import database.models.Author;
-import database.models.Book;
 import database.models.BookCharacter;
 import filesystem.models.Project;
 import filesystem.models.ProjectFile;

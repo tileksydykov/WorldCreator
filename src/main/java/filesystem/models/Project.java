@@ -123,6 +123,10 @@ public class Project {
         return chapters;
     }
 
+    public void addChapter(Chapter c){
+        this.chapters.add(c);
+    }
+
     public void setChapters(ArrayList<Chapter> chapters) {
         this.chapters = chapters;
     }
