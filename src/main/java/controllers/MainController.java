@@ -36,19 +36,21 @@ public class MainController extends ControllerBase {
 
     @FXML
     public void initialize() {
-        helper = new MainDataHolder(this);
+
     }
 
-    void saveProject(){
+    void saveProject() {
         fileSystem.saveProject(project);
     }
 
-    void refreshProject(){
+    void refreshProject() {
         project = fileSystem.readProject(project.getFileName());
     }
 
-    void initProject(String projectName){
+    void initProject(String projectName) {
+        fileSystem.setProjectName(projectName);
         project = fileSystem.readProject(projectName);
+        helper = new MainDataHolder(this);
         mainTree.setRoot(helper.getTree());
 
         mainPane.setTabClosingPolicy(TabPane.TabClosingPolicy.SELECTED_TAB);
@@ -59,7 +61,7 @@ public class MainController extends ControllerBase {
         String s = addCharacterField.getText();
         addCharacterField.setText("");
 
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             return;
         }
 
@@ -89,10 +91,11 @@ public class MainController extends ControllerBase {
         characterList.scrollTo(characterList.getItems().size() - 1);
 
         new AnimationTimer() {
-            int frameCount = 0 ;
+            int frameCount = 0;
+
             @Override
             public void handle(long now) {
-                frameCount++ ;
+                frameCount++;
                 if (frameCount > 1) {
                     characterList.edit(characterList.getItems().size() - 1);
                     stop();

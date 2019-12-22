@@ -26,18 +26,19 @@ public class HelloController extends ControllerBase {
 
     @FXML
     void Close(ActionEvent event) {
-        Node source = (Node)  event.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    public void initialize(){
-        for(ProjectFile proj : fileSystem.getProjects()){
+    public void initialize() {
+        for (ProjectFile proj : fileSystem.getProjects()) {
             GridPane p = new GridPane();
 
             p.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 ProjectFile p = proj;
+
                 @Override
                 public void handle(MouseEvent event) {
                     Node source = (Node) event.getSource();
@@ -71,22 +72,22 @@ public class HelloController extends ControllerBase {
         }
     }
 
-    public String cropLocation(String s){
+    public String cropLocation(String s) {
         int length = s.length();
-        if(length  > 30){
-            return s.substring(0, 15) + "..." + s.substring(length-15, length-1);
-        }else {
+        if (length > 30) {
+            return s.substring(0, 15) + "..." + s.substring(length - 15, length - 1);
+        } else {
             return s;
         }
     }
 
     @FXML
     void CreateNewProject(MouseEvent event) {
-        Node source = (Node)  event.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
-        try{
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        try {
             stage.setScene(loader.getScene("NewProjectScene"));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }

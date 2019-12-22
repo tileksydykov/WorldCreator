@@ -25,7 +25,7 @@ public class App extends Application {
         launch(args);
     }
 
-    private void createDatabase(){
+    private void createDatabase() {
         this.database = new WorldCreatorDatabase();
     }
 

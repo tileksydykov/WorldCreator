@@ -84,7 +84,7 @@ public class MainDataHolder extends DataHolder {
             BorderPane pane = l.load();
             p = pane;
             EditAuthorController c = l.getController();
-            c.setAuthor(a);
+            c.init(a, context);
         }catch (IOException e){
             e.printStackTrace();
         }

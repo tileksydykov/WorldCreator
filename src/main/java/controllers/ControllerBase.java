@@ -11,9 +11,11 @@ import javafx.stage.Stage;
 abstract class ControllerBase {
     public Loader loader = new Loader();
     ProjectFileSystem fileSystem = new ProjectFileSystem();
-    public ControllerBase() {}
 
-    void alert(String messageToUser){
+    public ControllerBase() {
+    }
+
+    void alert(String messageToUser) {
         Stage stage = new Stage();
         try {
             stage.setTitle("Alert");

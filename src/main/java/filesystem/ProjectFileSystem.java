@@ -24,18 +24,18 @@ public class ProjectFileSystem {
     private String projectName = "";
     private String projectDirURI;
 
-    public ProjectFileSystem(){
+    public ProjectFileSystem() {
         String workingDirectory = System.getProperty("user.dir");
         projectDirURI = workingDirectory + PROJECTS_NODE;
-        new File(projectDirURI+LASTPROJECT_NODE).mkdirs();
+        new File(projectDirURI + LASTPROJECT_NODE).mkdirs();
     }
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
 
-    public void initNewProjectFile(String name, ArrayList<Author> a, String projType){
-        String xmlFilePath = projectDirURI + "\\"+ name + FILE_EXTENSION;
+    public void initNewProjectFile(String name, ArrayList<Author> a, String projType) {
+        String xmlFilePath = projectDirURI + "\\" + name + FILE_EXTENSION;
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -47,8 +47,8 @@ public class ProjectFileSystem {
         }
     }
 
-    public void saveProject(Project p){
-        String xmlFilePath = projectDirURI + "\\"+ p.getFileName() + FILE_EXTENSION;
+    public void saveProject(Project p) {
+        String xmlFilePath = projectDirURI + "\\" + p.getFileName() + FILE_EXTENSION;
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -62,8 +62,8 @@ public class ProjectFileSystem {
         }
     }
 
-    public Project readProject(String projectName){
-        String xmlFilePath = projectDirURI + "\\"+ projectName + FILE_EXTENSION;
+    public Project readProject(String projectName) {
+        String xmlFilePath = projectDirURI + "\\" + projectName + FILE_EXTENSION;
         Project p;
         try {
             File fXmlFile = new File(xmlFilePath);
@@ -97,5 +97,22 @@ public class ProjectFileSystem {
             }
         }
         return projects;
+    }
+
+    public void saveAuthor(Author a) {
+        Project p = readProject(projectName);
+        ArrayList<Author> authors = p.getAuthors();
+        ArrayList<Author> newArray = new ArrayList<>();
+        int size = authors.size();
+        for (int i = 0; i < size; i++) {
+            Author b = authors.get(i);
+            if (b.getId().equals(a.getId())) {
+                newArray.add(a);
+            } else {
+                newArray.add(b);
+            }
+        }
+        p.setAuthors(newArray);
+        saveProject(p);
     }
 }

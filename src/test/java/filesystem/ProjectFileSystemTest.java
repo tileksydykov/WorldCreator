@@ -58,4 +58,15 @@ public class ProjectFileSystemTest {
     @Test
     public void getProjects() {
     }
+
+    @Test
+    public void saveAuthor(){
+        ProjectFileSystem pfs = new ProjectFileSystem();
+        pfs.setProjectName("hello");
+        Author a = new Author();
+        a.setEmail("fvsjhdcrffe");
+        a.setName("fwafew");
+        a.setId(-411083607);
+        pfs.saveAuthor(a);
+    }
 }
