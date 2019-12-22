@@ -149,6 +149,8 @@ public class MainController extends ControllerBase {
         String projName = project.getName();
         project = fileSystem.readProject(projName);
         mainTree.setRoot(helper.getTree());
+        characterList.getItems().removeAll();
+        initCharactes();
     }
 }
 
