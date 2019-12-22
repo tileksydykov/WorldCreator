@@ -51,7 +51,10 @@ public class MainDataHolder extends DataHolder {
         worldDesc.setOnMouseClicked((MouseEvent e) ->
                 addTab( context.project.getName() +  " : World Description", getWorldDescriptionPane()));
         rootItem.getChildren().add(new TreeItem(worldDesc));
-        rootItem.getChildren().add(new TreeItem("Introduction"));
+
+        Label introduction = new Label("Introduction");
+        introduction.setOnMouseClicked((MouseEvent e) -> addTab("Introduction",  getIntroductionPane()) );
+        rootItem.getChildren().add(new TreeItem(introduction));
 
         TreeItem chapterItem = new TreeItem("Chapters");
         chapterItem.getChildren().add(new TreeItem("Chapter 1"));
@@ -126,6 +129,20 @@ public class MainDataHolder extends DataHolder {
         BorderPane p = new BorderPane();
         try{
             FXMLLoader l = context.loader.getLoader("WorldDescription");
+            BorderPane pane = l.load();
+            p = pane;
+            WorldDescriptionController c = l.getController();
+            c.init(context);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return p;
+    }
+
+    private Pane getIntroductionPane(){
+        BorderPane p = new BorderPane();
+        try{
+            FXMLLoader l = context.loader.getLoader("Introduction");
             BorderPane pane = l.load();
             p = pane;
             WorldDescriptionController c = l.getController();
