@@ -1,22 +1,22 @@
 /** .root {
-    -fx-base: rgb(123, 153, 168);
-    -fx-background: rgb(210, 210, 210);
+    -fx-base: rgb(37, 37, 37);
+    -fx-background: rgb(20, 20, 20);
     -fx-color: derive(-fx-base, 10%);
-    -fx-control-inner-background: rgb(203, 203, 203);
+    -fx-control-inner-background: rgb(41, 41, 41);
     -fx-control-inner-background-alt: derive(-fx-control-inner-background, 2.5%);
-    -fx-light-text-color: rgb(41, 40, 45);
-    -fx-mid-text-color: rgb(37, 37, 37);
-    -fx-dark-text-color: rgb(20, 20, 20);
+    -fx-light-text-color: rgb(192, 198, 243);
+    -fx-mid-text-color: rgb(140, 133, 135);
+    -fx-dark-text-color: rgb(17, 48, 233);
     -fx-accent: rgb(140, 133, 135);
     -fx-selection-bar-non-focused: rgb(192, 198, 243);
 }
 .text-input {-fx-prompt-text-fill: derive(-fx-control-inner-background, +50%);}
 .text-input:focused {-fx-prompt-text-fill: transparent;}
 .scroll-bar > .increment-button > .increment-arrow,
-.scroll-bar > .decrement-button > .decrement-arrow {-fx-background-color: -fx-mark-highlight-color, rgb(220, 220, 220);}
+.scroll-bar > .decrement-button > .decrement-arrow {-fx-background-color: -fx-mark-highlight-color, rgb(37, 37, 37);}
 .scroll-bar > .increment-button:hover > .increment-arrow,
 .scroll-bar > .decrement-button:hover > .decrement-arrow {
-    -fx-background-color: -fx-mark-highlight-color, rgb(240, 240, 240);
+    -fx-background-color: -fx-mark-highlight-color, rgb(41, 41, 41);
 }
 .scroll-bar > .increment-button:pressed > .increment-arrow,
 .scroll-bar > .decrement-button:pressed > .decrement-arrow {-fx-background-color: -fx-mark-highlight-color, rgb(255, 255, 255);}

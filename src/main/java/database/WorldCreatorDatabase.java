@@ -17,6 +17,7 @@ public class WorldCreatorDatabase {
     public static void main(String[] args) {
         WorldCreatorDatabase w = new WorldCreatorDatabase();
         try {
+
             System.out.println("last");
         } catch (Exception e) {
             System.out.println(e.toString());
