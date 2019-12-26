@@ -1,4 +1,4 @@
-package database.models.modelhelper;
+package database.models;
 
 import java.util.Random;
 

@@ -1,8 +1,5 @@
 package database.models;
 
-import database.models.modelhelper.Model;
-import database.models.modelhelper.ModelInterface;
-
 public class BookCharacter extends Model {
     private int id = 0;
     private String name = "";

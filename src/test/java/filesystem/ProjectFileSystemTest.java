@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ProjectFileSystemTest {
 
     @Test
-    public void setProjectName() {
+    public void setProjectNameTest() {
         ProjectFileSystem p = new ProjectFileSystem();
         p.setProjectName("hello");
     }

@@ -1,7 +1,5 @@
 package database.models;
 
-import database.models.modelhelper.ModelInterface;
-
 public class Book implements ModelInterface {
     private Integer id = 0;
     private String name = "";

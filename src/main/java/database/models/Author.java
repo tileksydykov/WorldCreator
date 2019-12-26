@@ -1,8 +1,5 @@
 package database.models;
 
-import database.models.modelhelper.Model;
-import database.models.modelhelper.ModelInterface;
-
 import java.util.Arrays;
 
 public class Author extends Model {
